@@ -41,7 +41,7 @@ desktop.ini
 # Hidden folders
 *.hidden/
 *.secret/
-*.logs/
+.logs/
 .scripts/
 
 # Personal config
