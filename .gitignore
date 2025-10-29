@@ -42,7 +42,7 @@ desktop.ini
 *.hidden/
 *.secret/
 *.logs/
-*.scripts/
+.scripts/
 
 # Personal config
 *.env
