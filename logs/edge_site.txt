@@ -1,0 +1,602 @@
+🕓 Последние посещённые сайты в Edge:
+
+📅 2025-10-28 17:03:40
+🔗 Microsoft Copilot: ваш ИИ-помощник
+🌐 https://copilot.microsoft.com/chats/K78mWKio5h5Y8mjh8amzA
+
+📅 2025-10-28 17:00:48
+🔗 Microsoft Copilot: ваш ИИ-помощник
+🌐 https://copilot.microsoft.com/chats/T3BR3As8EJfdt7fMnZfjC
+
+📅 2025-10-28 16:26:07
+🔗 Monero wallet - Поиск в Google
+🌐 https://www.google.com/search?q=Monero+wallet&oq=Monero+wallet&gs_lcrp=EgRlZGdlKgkIABBFGDkYgAQyCQgAEEUYORiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABNIBCDI4NDBqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 16:26:06
+🔗 Home | Monero - secure, private, untraceable
+🌐 https://www.getmonero.org/
+
+📅 2025-10-28 16:25:02
+🔗 Отзыв в Майкрософт
+🌐 https://feedback.smartscreen.microsoft.com/feedback.aspx
+
+📅 2025-10-28 16:16:49
+🔗 Downloads | Monero - secure, private, untraceable
+🌐 https://www.getmonero.org/downloads/
+
+📅 2025-10-28 16:16:16
+🔗 Mining Monero | Monero - secure, private, untraceable
+🌐 https://www.getmonero.org/get-started/mining/
+
+📅 2025-10-28 16:16:06
+🔗 Workgroups | Monero - secure, private, untraceable
+🌐 https://www.getmonero.org/community/workgroups/
+
+📅 2025-10-28 16:07:23
+🔗 Release v6.24.0 · xmrig/xmrig
+🌐 https://github.com/xmrig/xmrig/releases/tag/v6.24.0
+
+📅 2025-10-28 16:07:00
+🔗 (без названия)
+🌐 https://api.github.com/repos/xmrig/xmrig/releases/latest
+
+📅 2025-10-28 16:05:51
+🔗 ▼ 335.51 | Трейдинг XMRUSDT | Bybit Бессрочные контракты
+🌐 https://www.bybit.com/trade/usdt/XMRUSDT
+
+📅 2025-10-28 16:05:03
+🔗 Авторизация | Bybit
+🌐 https://www.bybit.com/ru-RU/login
+
+📅 2025-10-28 16:05:01
+🔗 Авторизация | Bybit
+🌐 https://www.bybit.com/ru-RU/dashboard
+
+📅 2025-10-28 16:01:55
+🔗 SChernykh/p2pool: Decentralized pool for Monero mining
+🌐 https://github.com/SChernykh/p2pool
+
+📅 2025-10-28 16:01:47
+🔗 monero-mining · GitHub Topics
+🌐 https://github.com/topics/monero-mining
+
+📅 2025-10-28 16:01:43
+🔗 XMR mining github - Поиск в Google
+🌐 https://www.google.com/search?q=XMR+mining+github&oq=XMR+mining+github&gs_lcrp=EgRlZGdlKgkIABBFGDkYgAQyCQgAEEUYORiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABNIBCDczNjFqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 16:01:33
+🔗 xmrig/xmrig: RandomX, KawPow, CryptoNight and GhostRider unified CPU/GPU miner and RandomX benchmark
+🌐 https://github.com/xmrig/xmrig
+
+📅 2025-10-28 16:00:58
+🔗 какие монеты можно майнить - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5+%D0%BC%D0%BE%D0%BD%D0%B5%D1%82%D1%8B+%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D1%82%D1%8C&sca_esv=81b9b8c5170cc920&ei=rOgAaam_Hc2Jxc8PjbTekQI&ved=0ahUKEwipxcfyoceQAxXNRPEDHQ2aNyIQ4dUDCBE&uact=5&oq=%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5+%D0%BC%D0%BE%D0%BD%D0%B5%D1%82%D1%8B+%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D1%82%D1%8C&gs_lp=Egxnd3Mtd2l6LXNlcnAiMdC60LDQutC40LUg0LzQvtC90LXRgtGLINC80L7QttC90L4g0LzQsNC50L3QuNGC0YwyChAAGIAEGEMYigUyChAAGIAEGEMYigUyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIKEAAYgAQYQxiKBTIGEAAYFhgeMgYQABgWGB5I-TdQpApYiTZwA3gBkAEDmAF4oAGkIaoBBTI3LjE2uAEDyAEA-AEBmAIdoALdFagCAMICChAAGLADGNYEGEfCAgsQLhiABBjRAxjHAcICCBAuGIAEGNQCmAMA8QXnbo0At3T4t4gGAZAGCJIHBTEyLjE3oAfrlAOyBwUxMC4xN7gH1xXCBwYwLjI3LjLIB0w&sclient=gws-wiz-serp
+
+📅 2025-10-28 16:00:45
+🔗 можно ли майнить sol - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D0%BB%D0%B8+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D1%82%D1%8C+sol&sca_esv=81b9b8c5170cc920&ei=pOgAaYm_O8CTxc8P_YL4mAw&ved=0ahUKEwiJof3uoceQAxXASfEDHX0BHsMQ4dUDCBE&uact=5&oq=%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D0%BB%D0%B8+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D1%82%D1%8C+sol&gs_lp=Egxnd3Mtd2l6LXNlcnAiItC80L7QttC90L4g0LvQuCDQvNCw0LnQvdC40YLRjCBzb2wyBRAAGIAEMgYQABgWGB4yBRAAGO8FMggQABiABBiiBEjsB1CzBFjGBnACeAGQAQCYAXugAdQCqgEDMC4zuAEDyAEA-AEBmAIFoALmAsICChAAGLADGNYEGEeYAwCIBgGQBgiSBwMyLjOgB7IPsgcDMC4zuAfdAsIHBTAuMy4yyAcN&sclient=gws-wiz-serp
+
+📅 2025-10-28 16:00:37
+🔗 можно ли майнить тон - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D0%BB%D0%B8+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D1%82%D1%8C+%D1%82%D0%BE%D0%BD&oq=%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D0%BB%D0%B8+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D1%82%D1%8C+&gs_lcrp=EgRlZGdlKgcIARAAGIAEMgYIABBFGDkyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyBwgHEAAYgAQyBwgIEAAYgATSAQg2NjU4ajBqMagCALACAA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 15:59:34
+🔗 Stratum mining это - Поиск в Google
+🌐 https://www.google.com/search?q=Stratum+mining+%D1%8D%D1%82%D0%BE&sca_esv=81b9b8c5170cc920&ei=YOgAafT3DbeFxc8P9tnR8Ac&ved=0ahUKEwj0p5nOoceQAxW3QvEDHfZsFH4Q4dUDCBE&uact=5&oq=Stratum+mining+%D1%8D%D1%82%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiFVN0cmF0dW0gbWluaW5nINGN0YLQvjIIECEYoAEYwwQyCBAhGKABGMMESIMTUO0EWPERcAF4AZABAJgBigGgAdYGqgEDMC43uAEDyAEA-AEBmAIFoALsA8ICChAAGLADGNYEGEfCAgcQABiABBgCwgIMECEYoAEYwwQYChgqwgIKECEYoAEYwwQYCpgDAIgGAZAGCJIHAzEuNKAHrBayBwMwLjS4B-cDwgcFMC40LjHIBwk&sclient=gws-wiz-serp
+
+📅 2025-10-28 15:59:29
+🔗 Stratum это - Поиск в Google
+🌐 https://www.google.com/search?q=Stratum+%D1%8D%D1%82%D0%BE&oq=Stratum+%D1%8D%D1%82%D0%BE&gs_lcrp=EgRlZGdlKgkIABBFGDkYgAQyCQgAEEUYORiABDIICAEQABgWGB4yCAgCEAAYFhgeMggIAxAAGBYYHjIICAQQABgWGB4yCAgFEAAYFhgeMggIBhAAGBYYHjIICAcQABgWGB7SAQgyODM3ajBqMagCALACAA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 15:57:11
+🔗 alx-system_engineering-devops/0x15-api at main · Kboateng346/alx-system_engineering-devops
+🌐 https://github.com/Kboateng346/alx-system_engineering-devops/tree/main/0x15-api
+
+📅 2025-10-28 15:57:00
+🔗 Kboateng346/alx-system_engineering-devops
+🌐 https://github.com/Kboateng346/alx-system_engineering-devops
+
+📅 2025-10-28 15:57:00
+🔗 alx-system_engineering-devops/command_line_for_the_win at main · Kboateng346/alx-system_engineering-devops
+🌐 https://github.com/Kboateng346/alx-system_engineering-devops/tree/main/command_line_for_the_win
+
+📅 2025-10-28 15:56:59
+🔗 alx-system_engineering-devops/command_line_for_the_win/0-first_9_tasks.jpg at main · Kboateng346/alx-system_engineering-devops
+🌐 https://github.com/Kboateng346/alx-system_engineering-devops/blob/main/command_line_for_the_win/0-first_9_tasks.jpg
+
+📅 2025-10-28 15:56:58
+🔗 alx-system_engineering-devops/0x19-postmortem at main · Kboateng346/alx-system_engineering-devops
+🌐 https://github.com/Kboateng346/alx-system_engineering-devops/tree/main/0x19-postmortem
+
+📅 2025-10-28 15:56:58
+🔗 alx-system_engineering-devops/0x18-webstack_monitoring at main · Kboateng346/alx-system_engineering-devops
+🌐 https://github.com/Kboateng346/alx-system_engineering-devops/tree/main/0x18-webstack_monitoring
+
+📅 2025-10-28 15:56:58
+🔗 alx-system_engineering-devops/0x16-api_advanced at main · Kboateng346/alx-system_engineering-devops
+🌐 https://github.com/Kboateng346/alx-system_engineering-devops/tree/main/0x16-api_advanced
+
+📅 2025-10-28 15:56:27
+🔗 alx-system_engineering-devops/README.md at main · Kboateng346/alx-system_engineering-devops
+🌐 https://github.com/Kboateng346/alx-system_engineering-devops/blob/main/README.md
+
+📅 2025-10-28 15:56:16
+🔗 miner-crypto · GitHub Topics
+🌐 https://github.com/topics/miner-crypto
+
+📅 2025-10-28 15:56:12
+🔗 miner github - Поиск в Google
+🌐 https://www.google.com/search?q=miner+github&sca_esv=6b0b75a31f80727a&ei=Ss0AafWcO-GWxc8PmuW9wQc&ved=0ahUKEwj16ZTkh8eQAxVhS_EDHZpyL3gQ4dUDCBE&uact=5&oq=miner+github&gs_lp=Egxnd3Mtd2l6LXNlcnAiDG1pbmVyIGdpdGh1YjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeSNgMUIwIWIwIcAN4AJABAJgBjQKgAYIDqgEFMC4xLjG4AQPIAQD4AQGYAgSgAoUBwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHAzMuMaAH1QqyBwMwLjG4B3nCBwUwLjIuMsgHDA&sclient=gws-wiz-serp
+
+📅 2025-10-28 15:56:02
+🔗 RainbowMiner/RainbowMiner: GPU/CPU Mining script with intelligent profit-switching between miningpools, algorithms, miners, using all possible combinations of devices (NVIDIA, AMD, CPU). Features: actively maintained, uses the top actual miner programs (Bminer, Ccminer, Claymore, Dstm, EnemyZ, Sgminer, T-rex and more) easy setup wizard, webinterface, auto update.
+🌐 https://github.com/RainbowMiner/RainbowMiner
+
+📅 2025-10-28 15:55:52
+🔗 miner · GitHub Topics
+🌐 https://github.com/topics/miner
+
+📅 2025-10-28 15:55:49
+🔗 xmrig/xmrig: RandomX, KawPow, CryptoNight and GhostRider unified CPU/GPU miner and RandomX benchmark
+🌐 https://github.com/xmrig/xmrig?tab=readme-ov-file
+
+📅 2025-10-28 15:55:49
+🔗 xmrig/scripts at master · xmrig/xmrig
+🌐 https://github.com/xmrig/xmrig/tree/master/scripts
+
+📅 2025-10-28 15:55:48
+🔗 xmrig/res at master · xmrig/xmrig
+🌐 https://github.com/xmrig/xmrig/tree/master/res
+
+📅 2025-10-28 15:55:48
+🔗 xmrig/doc at master · xmrig/xmrig
+🌐 https://github.com/xmrig/xmrig/tree/master/doc
+
+📅 2025-10-28 15:55:47
+🔗 xmrig/cmake at master · xmrig/xmrig
+🌐 https://github.com/xmrig/xmrig/tree/master/cmake
+
+📅 2025-10-28 15:55:10
+🔗 Майнер на Python
+🌐 https://chatgpt.com/c/6900e73f-4f40-832a-bfbc-83e5e148a1e5
+
+📅 2025-10-28 15:54:36
+🔗 ChatGPT
+🌐 https://chatgpt.com/
+
+📅 2025-10-28 15:54:07
+🔗 xmrig/bin at master · xmrig/xmrig
+🌐 https://github.com/xmrig/xmrig/tree/master/bin
+
+📅 2025-10-28 15:53:21
+🔗 xmrig/xmrig: RandomX, KawPow, CryptoNight and GhostRider unified CPU/GPU miner and RandomX benchmark
+🌐 https://github.com/xmrig/xmrig?tab=GPL-3.0-1-ov-file
+
+📅 2025-10-28 15:52:40
+🔗 NebuTech/NBMiner: GPU Miner for ETH, RVN, BEAM, CFX, ZIL, AE, ERGO
+🌐 https://github.com/NebuTech/NBMiner
+
+📅 2025-10-28 15:52:17
+🔗 miner python github - Поиск в Google
+🌐 https://www.google.com/search?q=miner+python+github&oq=miner+python+github&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIKCAEQABgKGBYYHjIICAIQABgWGB4yCAgDEAAYFhgeMggIBBAAGBYYHjIICAUQABgWGB4yCggGEAAYgAQYogQyBwgHEAAY7wUyBwgIEAAY7wXSAQkxMDI0N2owajGoAgCwAgA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 15:52:16
+🔗 Pymmdrza/SoloMiner: SoloMiner Bitcoin Mining With Python
+🌐 https://github.com/Pymmdrza/SoloMiner
+
+📅 2025-10-28 15:52:16
+🔗 SoloMiner/SoloMiner.py at mainx · Pymmdrza/SoloMiner
+🌐 https://github.com/Pymmdrza/SoloMiner/blob/mainx/SoloMiner.py
+
+📅 2025-10-28 15:51:56
+🔗 SoloMiner/Solominer_v2.py at mainx · Pymmdrza/SoloMiner
+🌐 https://github.com/Pymmdrza/SoloMiner/blob/mainx/Solominer_v2.py
+
+📅 2025-10-28 15:46:57
+🔗 upowai/майнер: Ай Майнер
+🌐 https://github.com/upowai/miner
+
+📅 2025-10-28 15:46:45
+🔗 upowai/miner: Ai Miner
+🌐 https://github.com/upowai/miner#
+
+📅 2025-10-28 15:46:44
+🔗 miner/miner.py at main · upowai/miner
+🌐 https://github.com/upowai/miner/blob/main/miner.py
+
+📅 2025-10-28 15:46:43
+🔗 miner/utils at main · upowai/miner
+🌐 https://github.com/upowai/miner/tree/main/utils
+
+📅 2025-10-28 15:46:43
+🔗 miner/config at main · upowai/miner
+🌐 https://github.com/upowai/miner/tree/main/config
+
+📅 2025-10-28 15:46:42
+🔗 miner/config/config.py at main · upowai/miner
+🌐 https://github.com/upowai/miner/blob/main/config/config.py
+
+📅 2025-10-28 15:44:38
+🔗 miner/job_management at main · upowai/miner
+🌐 https://github.com/upowai/miner/tree/main/job_management
+
+📅 2025-10-28 14:48:58
+🔗 мьюнинг - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BC%D1%8C%D1%8E%D0%BD%D0%B8%D0%BD%D0%B3&sca_esv=81b9b8c5170cc920&udm=2&biw=1482&bih=714&ei=u9cAaZTvDcCWxc8P74zR6Ao&ved=0ahUKEwjUuLLekceQAxVAS_EDHW9GFK0Q4dUDCBI&uact=5&oq=%D0%BC%D1%8C%D1%8E%D0%BD%D0%B8%D0%BD%D0%B3&gs_lp=Egtnd3Mtd2l6LWltZyIO0LzRjNGO0L3QuNC90LMyBRAAGIAEMgUQABiABDIHEAAYgAQYCjIHEAAYgAQYCjIHEAAYgAQYCjIHEAAYgAQYCjIHEAAYgAQYCjIHEAAYgAQYCjIHEAAYgAQYCjIHEAAYgAQYCkirG1DeBlixE3ADeACQAQCYAYkBoAG2BqoBAzAuN7gBA8gBAPgBAZgCB6AC1AbCAg4QABiABBixAxiDARiKBcICCxAAGIAEGLEDGIMBwgIIEAAYgAQYsQPCAgkQABiABBgBGAqYAwCIBgGSBwMwLjegB50ssgcDMC43uAfUBsIHBTAuNC4zyAcW&sclient=gws-wiz-img
+
+📅 2025-10-28 14:48:38
+🔗 плохая челюсть вдавленная - Поиск в Google
+🌐 https://www.google.com/search?sca_esv=81b9b8c5170cc920&udm=2&fbs=AIIjpHwvFOGbxttz35odGQyd-9_s11AxOWPxE8KzCnyW2Otdt3DQklj2kCrRg3cME-gawYQyiXjDIP9MyE7M7ISUonhIjZNus3j20xnQXBGYTd5ovOaB5n_zRJYXMH0Pbz2aoUTxuyeCWkmGkaiTs1eXdVy07lGP2zhMl6nNAXpleQf41ZZr-I2myuLMbIwfZRgYhGBW7uPMk2-R9zZDNVfwE_vENtyrlIjHjCE_E7P4MvIJrjkhI_Bzrc6U4awlnBcbrOnG6kBz&q=%D0%BF%D0%BB%D0%BE%D1%85%D0%B0%D1%8F+%D1%87%D0%B5%D0%BB%D1%8E%D1%81%D1%82%D1%8C+%D0%B2%D0%B4%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F&sa=X&ved=2ahUKEwiXmNndkceQAxU6VPEDHTA-MpkQtKgLegQIFxAB&biw=1482&bih=714&dpr=1.25#vhid=-RyiwHxcb0FJwM&vssid=mosaic
+
+📅 2025-10-28 14:48:29
+🔗 плохая челюсть вдавленная - Поиск в Google
+🌐 https://www.google.com/search?sca_esv=81b9b8c5170cc920&udm=2&fbs=AIIjpHwvFOGbxttz35odGQyd-9_s11AxOWPxE8KzCnyW2Otdt3DQklj2kCrRg3cME-gawYQyiXjDIP9MyE7M7ISUonhIjZNus3j20xnQXBGYTd5ovOaB5n_zRJYXMH0Pbz2aoUTxuyeCWkmGkaiTs1eXdVy07lGP2zhMl6nNAXpleQf41ZZr-I2myuLMbIwfZRgYhGBW7uPMk2-R9zZDNVfwE_vENtyrlIjHjCE_E7P4MvIJrjkhI_Bzrc6U4awlnBcbrOnG6kBz&q=%D0%BF%D0%BB%D0%BE%D1%85%D0%B0%D1%8F+%D1%87%D0%B5%D0%BB%D1%8E%D1%81%D1%82%D1%8C+%D0%B2%D0%B4%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F&sa=X&ved=2ahUKEwiXmNndkceQAxU6VPEDHTA-MpkQtKgLegQIFxAB&biw=1482&bih=714&dpr=1.25#vhid=JUEcqJKGSePjjM&vssid=mosaic
+
+📅 2025-10-28 14:48:27
+🔗 плохая челюсть вдавленная - Поиск в Google
+🌐 https://www.google.com/search?sca_esv=81b9b8c5170cc920&udm=2&fbs=AIIjpHwvFOGbxttz35odGQyd-9_s11AxOWPxE8KzCnyW2Otdt3DQklj2kCrRg3cME-gawYQyiXjDIP9MyE7M7ISUonhIjZNus3j20xnQXBGYTd5ovOaB5n_zRJYXMH0Pbz2aoUTxuyeCWkmGkaiTs1eXdVy07lGP2zhMl6nNAXpleQf41ZZr-I2myuLMbIwfZRgYhGBW7uPMk2-R9zZDNVfwE_vENtyrlIjHjCE_E7P4MvIJrjkhI_Bzrc6U4awlnBcbrOnG6kBz&q=%D0%BF%D0%BB%D0%BE%D1%85%D0%B0%D1%8F+%D1%87%D0%B5%D0%BB%D1%8E%D1%81%D1%82%D1%8C+%D0%B2%D0%B4%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F&sa=X&ved=2ahUKEwiXmNndkceQAxU6VPEDHTA-MpkQtKgLegQIFxAB&biw=1482&bih=714&dpr=1.25
+
+📅 2025-10-28 14:48:26
+🔗 плохая челюсть вдавленная - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BF%D0%BB%D0%BE%D1%85%D0%B0%D1%8F+%D1%87%D0%B5%D0%BB%D1%8E%D1%81%D1%82%D1%8C+%D0%B2%D0%B4%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F&oq=%D0%BF%D0%BB%D0%BE%D1%85%D0%B0%D1%8F+%D1%87%D0%B5%D0%BB%D1%8E%D1%81%D1%82%D1%8C+%D0%B2%D0%B4%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F&gs_lcrp=EgRlZGdlKgkIABBFGDkYnwUyCQgAEEUYORifBdIBCDM4MDBqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 14:34:03
+🔗 Le Chat
+🌐 https://chat.mistral.ai/chat/5688ff7a-ddf2-4c8b-8b61-37f5ddd3ca32
+
+📅 2025-10-28 14:33:54
+🔗 Le Chat
+🌐 https://chat.mistral.ai/chat
+
+📅 2025-10-28 14:25:27
+🔗 как узнать текующую директорию - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BA%D0%B0%D0%BA+%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BA%D1%83%D1%8E%D1%89%D1%83%D1%8E+%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8E&oq=%D0%BA%D0%B0%D0%BA+%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BA%D1%83%D1%8E%D1%89%D1%83%D1%8E+%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8E&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIJCAEQABgNGIAEMgkIAhAAGA0YgAQyCAgDEAAYFhgeMggIBBAAGBYYHjIICAUQABgWGB4yCggGEAAYogQYiQUyBwgHEOsHGEDSAQg3NjkxajBqMagCALACAA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 14:02:40
+🔗 Как майнить биткоин – пошаговый гайд для запуска и работы | Dzengi.com
+🌐 https://dzengi.com/ru/kak-majnit-bitcoin
+
+📅 2025-10-28 14:02:36
+🔗 как майнить криптовалюту - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BA%D0%B0%D0%BA+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D1%82%D1%8C+%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D0%B2%D0%B0%D0%BB%D1%8E%D1%82%D1%83&sca_esv=6b0b75a31f80727a&ei=8soAacmxFIONxc8Pl9DZyQg&oq=%D0%BA%D0%B0%D0%BA+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8&gs_lp=Egxnd3Mtd2l6LXNlcnAiEdC60LDQuiDQvNCw0LnQvdC4KgIIADIKEAAYgAQYQxiKBTIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEiQGVCdA1jPDXABeAGQAQCYAYcBoAGvCKoBAzAuObgBAcgBAPgBAZgCCqAC3QioAgrCAhAQABgDGLQCGOoCGI8B2AEBwgIQEC4YAxi0AhjqAhiPAdgBAcICDRAAGIAEGLEDGEMYigXCAhAQABiABBixAxhDGIMBGIoFwgILEAAYgAQYsQMYgwHCAgsQLhiABBixAxiDAcICCBAAGIAEGLEDwgIREC4YgAQYsQMY0QMYgwEYxwHCAgoQLhiABBhDGIoFwgIOEAAYgAQYsQMYgwEYigXCAhkQLhiABBhDGIoFGJcFGNwEGN4EGOAE2AECwgIFEC4YgASYAwbxBdDeVwKYYg0BugYECAEYCroGBggCEAEYFJIHAzEuOaAHoVOyBwMwLjm4B9YIwgcFMC4zLjfIByQ&sclient=gws-wiz-serp
+
+📅 2025-10-28 14:02:05
+🔗 HighNet - весь Мир в кармане
+🌐 http://highnet.info/
+
+📅 2025-10-28 14:02:05
+🔗 HighNet - весь Мир в кармане
+🌐 https://highnet.info/
+
+📅 2025-10-28 14:02:01
+🔗 highnet - Поиск в Google
+🌐 https://www.google.com/search?q=highnet&oq=highnet&gs_lcrp=EgRlZGdlKgkIABBFGDkYgAQyCQgAEEUYORiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIJCAUQABgKGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgYICBBFGD3SAQgxNjg1ajBqMagCALACAA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 13:57:34
+🔗 (3) МАЙНИНГ НА ДОМАШНЕМ ПК 2025 | ОБЗОР HIGHNET | ПРОГРАММА ДЛЯ МАЙНИНГА КРИПТОВАЛЮТЫ НА КОМПЬЮТЕРЕ - YouTube
+🌐 https://www.youtube.com/watch?v=AZ-NgkgoFw4
+
+📅 2025-10-28 13:57:24
+🔗 Овладейте искусством фотографии в Москве: путь от начинающего до профессионала
+🌐 https://www.sravni.ru/kursy/info/obuchenie-fotografii-v-moskve/
+
+📅 2025-10-28 13:57:22
+🔗 Взять займ в проверенной МФО
+🌐 https://www.sravni.ru/text/vzyat-zajm-v-proverennoj-mfo/
+
+📅 2025-10-28 13:56:41
+🔗 Как майнить криптовалюту
+🌐 https://www.sravni.ru/enciklopediya/info/kak-majnit-kriptovaljutu/
+
+📅 2025-10-28 13:56:16
+🔗 (3) как установить майер на пк - YouTube
+🌐 https://www.youtube.com/results?search_query=%D0%BA%D0%B0%D0%BA+%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C+%D0%BC%D0%B0%D0%B9%D0%B5%D1%80+%D0%BD%D0%B0+%D0%BF%D0%BA
+
+📅 2025-10-28 13:56:16
+🔗 (3) YouTube
+🌐 https://www.youtube.com/
+
+📅 2025-10-28 13:53:55
+🔗 лучшие монеты для майнинга 2025 - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BB%D1%83%D1%87%D1%88%D0%B8%D0%B5+%D0%BC%D0%BE%D0%BD%D0%B5%D1%82%D1%8B+%D0%B4%D0%BB%D1%8F+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D0%BD%D0%B3%D0%B0+2025&oq=%D0%BB%D1%83%D1%87%D1%88%D0%B8%D0%B5+%D0%BC%D0%BE%D0%BD%D0%B5%D1%82%D1%8B+%D0%B4%D0%BB%D1%8F+%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D0%BD%D0%B3%D0%B0+2025&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIICAEQABgWGB4yCggCEAAYgAQYogQyCggDEAAYgAQYogQyBwgEEAAY7wUyBwgFEAAY7wUyBwgGEAAY7wUyBwgHEOsHGEDSAQkxMTYzNGowajGoAgCwAgA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 13:53:09
+🔗 Microsoft Copilot: ваш ИИ-помощник
+🌐 https://copilot.microsoft.com/
+
+📅 2025-10-28 13:33:12
+🔗 assistant/assistant/actions.py at kripersi · kripersi/assistant
+🌐 https://github.com/kripersi/assistant/blob/kripersi/assistant/actions.py
+
+📅 2025-10-28 13:32:59
+🔗 assistant/assistant at kripersi · kripersi/assistant
+🌐 https://github.com/kripersi/assistant/tree/kripersi/assistant
+
+📅 2025-10-28 13:32:40
+🔗 kripersi/assistant: This Python voice assistant recognizes spoken commands and executes predefined actions like opening apps, taking screenshots, or switching keyboard layouts. It uses a simple keyword-matching system without AI, making it fast, reliable, and easy to customize for personal workflows.
+🌐 https://github.com/kripersi/assistant
+
+📅 2025-10-28 13:32:31
+🔗 Your Repositories
+🌐 https://github.com/kripersi?tab=repositories
+
+📅 2025-10-28 13:32:27
+🔗 scraper · GitHub Topics
+🌐 https://github.com/topics/scraper
+
+📅 2025-10-28 12:51:55
+🔗 кудрявые волосы у мужчин - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BA%D1%83%D0%B4%D1%80%D1%8F%D0%B2%D1%8B%D0%B5+%D0%B2%D0%BE%D0%BB%D0%BE%D1%81%D1%8B+%D1%83+%D0%BC%D1%83%D0%B6%D1%87%D0%B8%D0%BD&sca_esv=6b0b75a31f80727a&udm=2&biw=1482&bih=714&ei=Z7wAaf3DMaiNxc8PiYf0CQ&oq=%D0%BA%D1%83%D0%B4%D1%80%D1%8F%D0%B2%D1%8B%D0%B5+%D0%B2%D0%BE%D0%BB%D0%BE%D1%81%D1%8B+%D1%83+%D0%BC&gs_lp=Egtnd3Mtd2l6LWltZyIj0LrRg9C00YDRj9Cy0YvQtSDQstC-0LvQvtGB0Ysg0YMg0LwqAggAMgoQABiABBhDGIoFMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgARI_A5QU1ifBHAAeACQAQCYAaYBoAGHBaoBAzAuNbgBAcgBAPgBAZgCBaACrAXCAgYQABgHGB6YAwCIBgGSBwMwLjWgB8UlsgcDMC41uAesBcIHBTItNC4xyAcd&sclient=gws-wiz-img
+
+📅 2025-10-28 12:51:53
+🔗 кудрявые волосы - Поиск в Google
+🌐 https://www.google.com/search?sca_esv=6b0b75a31f80727a&udm=2&fbs=AIIjpHx9vDvsDhoNVh33uDjFNyRXGTR3seoa9m6wGPG7aXYQHV2YX8rGl4pH-fOhTFdpWYt63Nqdv1IC_9xlejXvsULzETFyuDJwOrwVzdATrBJ8FEMu0X4JgkKC7hCZglp5Ksg6mS3xR6_xGLgtOKVfg7Mkl8fl0pRd4ipc35LHWZW8iwfBW8yxFHnCw6n8Ya0s4akoSrJeCpzFrLuzuuu7_2ESbCS5qQNuUSLojh-U0a3zuLOwMiIw7M-tGWvJpa8NJQXSoSta&q=%D0%BA%D1%83%D0%B4%D1%80%D1%8F%D0%B2%D1%8B%D0%B5+%D0%B2%D0%BE%D0%BB%D0%BE%D1%81%D1%8B&sa=X&ved=2ahUKEwjZsefV98aQAxUCB9sEHWouLicQtKgLegQIExAB&biw=1482&bih=714&dpr=1.25
+
+📅 2025-10-28 12:51:50
+🔗 кудрявые волосы - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BA%D1%83%D0%B4%D1%80%D1%8F%D0%B2%D1%8B%D0%B5+%D0%B2%D0%BE%D0%BB%D0%BE%D1%81%D1%8B&oq=%D0%BA%D1%83%D0%B4%D1%80%D1%8F%D0%B2%D1%8B%D0%B5+%D0%B2%D0%BE%D0%BB%D0%BE%D1%81%D1%8B&gs_lcrp=EgRlZGdlKgkIABBFGDkYgAQyCQgAEEUYORiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABNIBCDQ2NjdqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 12:37:45
+🔗 Instagram
+🌐 https://www.instagram.com/_sh1kama_/
+
+📅 2025-10-28 12:37:41
+🔗 Instagram
+🌐 https://www.instagram.com/
+
+📅 2025-10-28 12:37:38
+🔗 инстаграм - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%B3%D1%80%D0%B0%D0%BC&oq=%D0%B8%D0%BD%D1%81%D1%82%D0%B0&gs_lcrp=EgRlZGdlKhAIABAAGIMBGLEDGIAEGPkHMhAIABAAGIMBGLEDGIAEGPkHMg0IARAAGIMBGLEDGIAEMg8IAhBFGDsYgwEYsQMYgAQyDQgDEAAYgwEYsQMYgAQyCggEEAAYsQMYgAQyBwgFEAAYgAQyDQgGEAAYgwEYsQMYgAQyBggHEAUYQNIBBzc4NWowajmoAgCwAgE&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 12:37:36
+🔗 вк - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%B2%D0%BA&oq=%D0%B2%D0%BA&gs_lcrp=EgRlZGdlKg8IABBFGDkYgwEYsQMYgAQyDwgAEEUYORiDARixAxiABDINCAEQABiDARixAxiABDINCAIQABiDARixAxiABDIHCAMQABiABDINCAQQABiDARixAxiABDIKCAUQABixAxiABDIHCAYQABiABDIGCAcQBRhAMgYICBBFGD3SAQgxMDE1ajBqMagCALACAA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 12:35:42
+🔗 ВКонтакте | Добро пожаловать
+🌐 https://m.vk.com/
+
+📅 2025-10-28 12:35:42
+🔗 ВКонтакте | Добро пожаловать
+🌐 https://vk.com/
+
+📅 2025-10-28 12:35:39
+🔗 vk - Поиск в Google
+🌐 https://www.google.com/search?q=vk&oq=vk&gs_lcrp=EgRlZGdlKg8IABBFGDkYgwEYsQMYgAQyDwgAEEUYORiDARixAxiABDINCAEQABixAxiABBiKBTIHCAIQABiABDINCAMQABiDARixAxiABDIHCAQQABiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPDIGCAgQRRg80gEIMTQyMGowajGoAgCwAgA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 12:27:38
+🔗 1280px-Pokai_Bucht_auf_Oahu.jpg (1280×720)
+🌐 https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pokai_Bucht_auf_Oahu.jpg/1280px-Pokai_Bucht_auf_Oahu.jpg
+
+📅 2025-10-28 12:27:28
+🔗 Pokai Bucht auf Oahu - пляж — Викисловарь
+🌐 https://ru.wiktionary.org/wiki/%D0%BF%D0%BB%D1%8F%D0%B6#/media/%D0%A4%D0%B0%D0%B9%D0%BB:Pokai_Bucht_auf_Oahu.jpg
+
+📅 2025-10-28 12:27:25
+🔗 пляж — Викисловарь
+🌐 https://ru.wiktionary.org/wiki/%D0%BF%D0%BB%D1%8F%D0%B6
+
+📅 2025-10-28 12:27:19
+🔗 пляж - Поиск в Google
+🌐 https://www.google.com/search?sca_esv=c3663fb3fa70fe34&udm=2&fbs=AIIjpHx9vDvsDhoNVh33uDjFNyRXGTR3seoa9m6wGPG7aXYQHV2YX8rGl4pH-fOhTFdpWYt63Nqdv1IC_9xlejXvsULzETFyuDJwOrwVzdATrBJ8FEMu0X4JgkKC7hCZglp5KsgFJeBhF3w5EjJk9fZ1wnKBXFsrv1rvD9KXKG9nTEDV8I_e50bs4sbzN10vILVyz69ZBZErlzvu0eXi-t-NOYk5J_adIGEvRcjK73FZ20Ono2GC9d5vpWFhTwvU3u90MYmRGEWy&q=%D0%BF%D0%BB%D1%8F%D0%B6&sa=X&ved=2ahUKEwiP3KeI8saQAxWpVPEDHcJVB0MQtKgLegQIFhAB&biw=1482&bih=714&dpr=1.25#vhid=eJny_e6xN5hSTM&vssid=mosaic
+
+📅 2025-10-28 12:27:11
+🔗 Один момент…
+🌐 https://guide.planetofhotels.com/ru/blog/10-plyazhey-iz-filmov-gde-khochetsya-pobyvat
+
+📅 2025-10-28 12:27:11
+🔗 Just a moment...
+🌐 https://guide.planetofhotels.com/ru/blog/10-plyazhey-iz-filmov-gde-khochetsya-pobyvat?__cf_chl_rt_tk=ZUBA.kzPIrebw86Kjw1q7i.xezP3pmY.CkeWdBc6s14-1761654430-1.0.1.1-BPwOGcBuEb2U5pxp3iucBV.M8c85EmjL4TeMoTYL2tU
+
+📅 2025-10-28 12:26:51
+🔗 пляж - Поиск в Google
+🌐 https://www.google.com/search?sca_esv=c3663fb3fa70fe34&udm=2&fbs=AIIjpHx9vDvsDhoNVh33uDjFNyRXGTR3seoa9m6wGPG7aXYQHV2YX8rGl4pH-fOhTFdpWYt63Nqdv1IC_9xlejXvsULzETFyuDJwOrwVzdATrBJ8FEMu0X4JgkKC7hCZglp5KsgFJeBhF3w5EjJk9fZ1wnKBXFsrv1rvD9KXKG9nTEDV8I_e50bs4sbzN10vILVyz69ZBZErlzvu0eXi-t-NOYk5J_adIGEvRcjK73FZ20Ono2GC9d5vpWFhTwvU3u90MYmRGEWy&q=%D0%BF%D0%BB%D1%8F%D0%B6&sa=X&ved=2ahUKEwiP3KeI8saQAxWpVPEDHcJVB0MQtKgLegQIFhAB&biw=1482&bih=714&dpr=1.25#vhid=M0XR7iVyLOnqMM&vssid=mosaic
+
+📅 2025-10-28 12:26:49
+🔗 пляж - Поиск в Google
+🌐 https://www.google.com/search?sca_esv=c3663fb3fa70fe34&udm=2&fbs=AIIjpHx9vDvsDhoNVh33uDjFNyRXGTR3seoa9m6wGPG7aXYQHV2YX8rGl4pH-fOhTFdpWYt63Nqdv1IC_9xlejXvsULzETFyuDJwOrwVzdATrBJ8FEMu0X4JgkKC7hCZglp5KsgFJeBhF3w5EjJk9fZ1wnKBXFsrv1rvD9KXKG9nTEDV8I_e50bs4sbzN10vILVyz69ZBZErlzvu0eXi-t-NOYk5J_adIGEvRcjK73FZ20Ono2GC9d5vpWFhTwvU3u90MYmRGEWy&q=%D0%BF%D0%BB%D1%8F%D0%B6&sa=X&ved=2ahUKEwiP3KeI8saQAxWpVPEDHcJVB0MQtKgLegQIFhAB&biw=1482&bih=714&dpr=1.25#vhid=KgNTZ5Zf1OU63M&vssid=mosaic
+
+📅 2025-10-28 12:26:47
+🔗 пляж - Поиск в Google
+🌐 https://www.google.com/search?sca_esv=c3663fb3fa70fe34&udm=2&fbs=AIIjpHx9vDvsDhoNVh33uDjFNyRXGTR3seoa9m6wGPG7aXYQHV2YX8rGl4pH-fOhTFdpWYt63Nqdv1IC_9xlejXvsULzETFyuDJwOrwVzdATrBJ8FEMu0X4JgkKC7hCZglp5KsgFJeBhF3w5EjJk9fZ1wnKBXFsrv1rvD9KXKG9nTEDV8I_e50bs4sbzN10vILVyz69ZBZErlzvu0eXi-t-NOYk5J_adIGEvRcjK73FZ20Ono2GC9d5vpWFhTwvU3u90MYmRGEWy&q=%D0%BF%D0%BB%D1%8F%D0%B6&sa=X&ved=2ahUKEwiP3KeI8saQAxWpVPEDHcJVB0MQtKgLegQIFhAB&biw=1482&bih=714&dpr=1.25
+
+📅 2025-10-28 12:26:45
+🔗 пляж - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%BF%D0%BB%D1%8F%D0%B6&oq=%D0%BF%D0%BB%D1%8F%D0%B6&gs_lcrp=EgRlZGdlKgkIABBFGDsYgAQyCQgAEEUYOxiABDIKCAEQABixAxiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABNIBBzUxOWowajGoAgCwAgA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 12:25:00
+🔗 Бот: Команды и Меню
+🌐 https://chat.mistral.ai/chat/40fb6ced-23ee-4eb1-8e5b-91e7d1173d86
+
+📅 2025-10-28 12:24:57
+🔗 Le Chat
+🌐 https://chat.mistral.ai/chat/91004fad-20e6-41df-8271-5c93ab4a1fc1
+
+📅 2025-10-28 12:13:59
+🔗 зачем нужны scratch file в python pycharm - Поиск в Google
+🌐 https://www.google.com/search?q=%D0%B7%D0%B0%D1%87%D0%B5%D0%BC+%D0%BD%D1%83%D0%B6%D0%BD%D1%8B+scratch+file+%D0%B2+python+pycharm&oq=%D0%B7%D0%B0%D1%87%D0%B5%D0%BC+%D0%BD%D1%83%D0%B6%D0%BD%D1%8B+scratch+file+%D0%B2+python+pycharm&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIHCAEQ6wcYQNIBCDk3NDRqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 12:08:33
+🔗 Создание простоейшего трояна на python | code geniuses | Дзен
+🌐 https://dzen.ru/a/ZV3VnkFnqSzEhwBf
+
+📅 2025-10-28 12:08:33
+🔗 Создание простоейшего трояна на python | code geniuses | Дзен
+🌐 https://static.dzeninfra.ru/api/redirect/cryproxy?crookie=QWos7tgpyVdpQAf69STpYJLOFEe0fc%2F11KyPzhJRlS9VjMTrzX7g56jJc0nZqlAL9a0iqAO9%2BA99DlybriWhfmsV9Mc%3D&retpath=https%3A%2F%2Fdzen.ru%2Fa%2FZV3VnkFnqSzEhwBf
+
+📅 2025-10-28 12:08:22
+🔗 А что такое singleton?И сколько вещей надо изменить чтобы крыса заработала?И куда надо вирус на компьютер жертвы? · Issue #4 · itJunky/RATAttack
+🌐 https://github.com/itJunky/RATAttack/issues/4
+
+📅 2025-10-28 12:08:04
+🔗 telerat · GitHub Topics
+🌐 https://github.com/topics/telerat
+
+📅 2025-10-28 12:08:02
+🔗 A-CodeCreater/ApocalypseRat: Средство удаленного администрирования Windows через Telegram бота.
+🌐 https://github.com/A-CodeCreater/ApocalypseRat
+
+📅 2025-10-28 12:06:16
+🔗 Microsoft Copilot: ваш ИИ-помощник
+🌐 https://copilot.microsoft.com/chats/rEi5FGcpewrR6gwnaKsCv
+
+📅 2025-10-28 12:05:09
+🔗 ApocalypseRat/ApocalypseClient.py at master · A-CodeCreater/ApocalypseRat
+🌐 https://github.com/A-CodeCreater/ApocalypseRat/blob/master/ApocalypseClient.py
+
+📅 2025-10-28 12:04:23
+🔗 02downs/Simple-Tele-Rat: Python 3.11
+🌐 https://github.com/02downs/Simple-Tele-Rat
+
+📅 2025-10-28 12:03:34
+🔗 Simple-Tele-Rat/simple-tele-rat.py at main · 02downs/Simple-Tele-Rat
+🌐 https://github.com/02downs/Simple-Tele-Rat/blob/main/simple-tele-rat.py
+
+📅 2025-10-28 12:03:10
+🔗 CrazyProger1/TRAT: TRAT is a powerful cross-platform RAT based on Telegram bot protocol.
+🌐 https://github.com/CrazyProger1/TRAT
+
+📅 2025-10-28 12:03:03
+🔗 github python RAT with tg bot - Поиск в Google
+🌐 https://www.google.com/search?q=github+python+RAT+with+tg+bot&sca_esv=c3663fb3fa70fe34&ei=87AAaYg44o3Fzw__iq_wBw&ved=0ahUKEwjI_Z_g7MaQAxXiRvEDHX_FC34Q4dUDCBE&uact=5&oq=github+python+RAT+with+tg+bot&gs_lp=Egxnd3Mtd2l6LXNlcnAiHWdpdGh1YiBweXRob24gUkFUIHdpdGggdGcgYm90MgUQIRigAUjtF1DgBljuFnAEeACQAQCYAZUBoAGaCKoBAzAuObgBA8gBAPgBAZgCDaAC1AjCAggQABiwAxjvBcICCxAAGIAEGLADGKIEwgIHECEYoAEYCsICBBAhGBWYAwCIBgGQBgOSBwM0LjmgB8sXsgcDMC45uAfDCMIHBjAuMTIuMcgHHQ&sclient=gws-wiz-serp
+
+📅 2025-10-28 12:02:59
+🔗 github python RAT with tg - Поиск в Google
+🌐 https://www.google.com/search?q=github+python+RAT+with+tg&sca_esv=c3663fb3fa70fe34&ei=LbAAaa_KJImVxc8PzIaosQ4&ved=0ahUKEwjvlI-C7MaQAxWJSvEDHUwDKuYQ4dUDCBE&uact=5&oq=github+python+RAT+with+tg&gs_lp=Egxnd3Mtd2l6LXNlcnAiGWdpdGh1YiBweXRob24gUkFUIHdpdGggdGcyBRAhGKABMgUQIRigATIFECEYoAFIhhpQwAFY-RZwBXgAkAEAmAGdAaAB2AqqAQQwLjExuAEDyAEA-AEBmAIMoAKlCMICBxAhGKABGAqYAwCIBgGSBwM0LjigB7YXsgcDMC44uAeVCMIHBDAuMTLIBxg&sclient=gws-wiz-serp
+
+📅 2025-10-28 12:02:55
+🔗 github python RAT - Поиск в Google
+🌐 https://www.google.com/search?q=github+python+RAT&sca_esv=c3663fb3fa70fe34&ei=n68Aae_PHp2C7NYPpsDP2A0&ved=0ahUKEwivm66-68aQAxUdAdsEHSbgE9sQ4dUDCBE&uact=5&oq=github+python+RAT&gs_lp=Egxnd3Mtd2l6LXNlcnAiEWdpdGh1YiBweXRob24gUkFUMggQABgTGBYYHjIIEAAYExgWGB4yCBAAGBMYFhgeMggQABiABBiiBDIFEAAY7wUyCBAAGIAEGKIESJwKUK8CWKUEcAF4AJABAJgBbqABogOqAQMyLjK4AQPIAQD4AQGYAgOgAuQBwgILEAAYgAQYsAMYogTCAgUQABiABMICCBAAGBYYChgewgIGEAAYFhgemAMAiAYBkAYCkgcDMS4yoAfjC7IHAzAuMrgH3gHCBwUwLjEuMsgHDQ&sclient=gws-wiz-serp
+
+📅 2025-10-28 12:02:52
+🔗 python-rat · GitHub Topics
+🌐 https://github.com/topics/python-rat
+
+📅 2025-10-28 12:02:42
+🔗 Riot-Byte/aphrobyte-rat: A powerful Remote Administration Tool that uses Discord as C2. This means you can control your devices through Discord.
+🌐 https://github.com/Riot-Byte/aphrobyte-rat
+
+📅 2025-10-28 12:02:29
+🔗 mategol/PySilon-malware: Advanced RAT written in Python language, fully controllable through Discord with dedicated GUI builder to make preparation easier.
+🌐 https://github.com/mategol/PySilon-malware
+
+📅 2025-10-28 12:02:28
+🔗 PySilon-malware/tools at main · mategol/PySilon-malware
+🌐 https://github.com/mategol/PySilon-malware/tree/main/tools
+
+📅 2025-10-28 12:02:27
+🔗 PySilon-malware/tools/splitter.py at main · mategol/PySilon-malware
+🌐 https://github.com/mategol/PySilon-malware/blob/main/tools/splitter.py
+
+📅 2025-10-28 12:02:27
+🔗 PySilon-malware/tools/drawling_studio at main · mategol/PySilon-malware
+🌐 https://github.com/mategol/PySilon-malware/tree/main/tools/drawling_studio
+
+📅 2025-10-28 12:02:26
+🔗 PySilon-malware/tools/drawling_studio/main.py at main · mategol/PySilon-malware
+🌐 https://github.com/mategol/PySilon-malware/blob/main/tools/drawling_studio/main.py
+
+📅 2025-10-28 12:02:25
+🔗 PySilon-malware/resources at main · mategol/PySilon-malware
+🌐 https://github.com/mategol/PySilon-malware/tree/main/resources
+
+📅 2025-10-28 12:02:25
+🔗 PySilon-malware/resources/crypto_clipper.json at main · mategol/PySilon-malware
+🌐 https://github.com/mategol/PySilon-malware/blob/main/resources/crypto_clipper.json
+
+📅 2025-10-28 12:02:24
+🔗 PySilon-malware/resources/custom_imports.ini at main · mategol/PySilon-malware
+🌐 https://github.com/mategol/PySilon-malware/blob/main/resources/custom_imports.ini
+
+📅 2025-10-28 12:02:20
+🔗 PySilon-malware/resources/discord_token_grabber.py at main · mategol/PySilon-malware
+🌐 https://github.com/mategol/PySilon-malware/blob/main/resources/discord_token_grabber.py
+
+📅 2025-10-28 11:59:38
+🔗 github python get passwords chrome - Поиск в Google
+🌐 https://www.google.com/search?q=github+python+get+passwords+chrome&oq=github+python+get+passwords+chrome&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIKCAEQABiABBiiBDIKCAIQABiABBiiBDIKCAMQABiABBiiBDIKCAQQABiABBiiBDIGCAUQRRhAMgcIBhDrBxhA0gEINzY5NWowajGoAgCwAgA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 11:59:34
+🔗 chrome-password · GitHub Topics
+🌐 https://github.com/topics/chrome-password?l=python
+
+📅 2025-10-28 11:59:29
+🔗 EvanJ4536/Harmony-Discord-RAT: A simple RAT written in Python that uses Discord as it's C2 server.
+🌐 https://github.com/EvanJ4536/Harmony-Discord-RAT
+
+📅 2025-10-28 11:59:09
+🔗 yield python что это - Поиск в Google
+🌐 https://www.google.com/search?q=yield+python+%D1%87%D1%82%D0%BE+%D1%8D%D1%82%D0%BE&oq=yield+python&gs_lcrp=EgRlZGdlKgoIABAAGIAEGPkHMgoIABAAGIAEGPkHMgYIARBFGDkyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyBwgHEAAYgAQyBwgIEAAYgATSAQgxMjIxajBqMagCALACAA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 11:58:10
+🔗 zubairjammu786/decrypt-chrome-passwords-all-users: Python script that can decrypt chrome passwords for all users on windows and output csv files.
+🌐 https://github.com/zubairjammu786/decrypt-chrome-passwords-all-users
+
+📅 2025-10-28 11:57:29
+🔗 decrypt-chrome-passwords-all-users/decrypt_chrome_passwords.py at main · zubairjammu786/decrypt-chrome-passwords-all-users
+🌐 https://github.com/zubairjammu786/decrypt-chrome-passwords-all-users/blob/main/decrypt_chrome_passwords.py
+
+📅 2025-10-28 10:39:03
+🔗 mvrozanti/RAT-via-Telegram: Windows Remote Administration Tool via Telegram
+🌐 https://github.com/mvrozanti/RAT-via-Telegram
+
+📅 2025-10-28 10:39:03
+🔗 Microsoft Copilot: ваш ИИ-помощник
+🌐 https://copilot.microsoft.com/chats/p95YcZA3TifRvDmTYVL86
+
+📅 2025-10-28 10:15:57
+🔗 Le Chat
+🌐 https://chat.mistral.ai/chat/adea0740-1e2b-4bb6-b3e5-9f953ca3bbe1
+
+📅 2025-10-28 09:14:57
+🔗 БТК ЧАСЫ ПАР - Google Таблицы
+🌐 https://docs.google.com/spreadsheets/d/1ibBQmlvNwnq4_Qp1gnfjXuOmWQcMp7vnpeuZMU-Yxew/edit?gid=0#gid=0
+
+📅 2025-10-28 09:14:56
+🔗 БТК ЧАСЫ ПАР - Google Таблицы
+🌐 https://docs.google.com/spreadsheets/d/1ibBQmlvNwnq4_Qp1gnfjXuOmWQcMp7vnpeuZMU-Yxew/edit
+
+📅 2025-10-28 09:14:56
+🔗 БТК ЧАСЫ ПАР - Google Таблицы
+🌐 https://docs.google.com/spreadsheets/d/1ibBQmlvNwnq4_Qp1gnfjXuOmWQcMp7vnpeuZMU-Yxew/edit?ouid=113646044023517935713&usp=sheets_home&ths=true
+
+📅 2025-10-28 09:14:52
+🔗 Google Таблицы
+🌐 https://docs.google.com/spreadsheets/u/0/?ec=wgc-sheets-globalnav-goto&authuser=4
+
+📅 2025-10-28 09:14:52
+🔗 Google Таблицы
+🌐 https://accounts.google.com/ServiceLogin?service=wise&passive=1209600&osid=1&continue=https://docs.google.com/spreadsheets/u/0/?ec%3Dwgc-sheets-globalnav-goto%26authuser%3D4&followup=https://docs.google.com/spreadsheets/u/0/?ec%3Dwgc-sheets-globalnav-goto%26authuser%3D4&ltmpl=sheets&authuser=4
+
+📅 2025-10-28 09:14:52
+🔗 Google Таблицы
+🌐 https://docs.google.com/accounts/SetOSID?authuser=4&continue=https://docs.google.com/spreadsheets/u/0/?ec%3Dwgc-sheets-globalnav-goto%26authuser%3D4%26pli%3D1&osidt=ALWU2cuzxBCW7gAscXJdUi_yJn9AwfCAzAcs_Bz7_ZNXGZrCDBxNSXxepy1ge5huKGcBExFXe3085PFGP17CD7ome1UNPua1aX8w_AiezZ8ncxMyeIbFR52RGVEBRN3cISFeVDajasCbidCFAha0jFRtEgoBZ-rNs0XijbKmzzfdaZMYe8o0-rfCaqcYSqA0z4WzUUBVZw7421PYyoeQfjv3i7O-dngHDJ-pM-h7pk3STx4XpxrAS_E4DWCNJineRNhB_GwtzE3bQoOAi3K9wcapQzRtcwIwOpeDIT5LdX_mEVzQq04aVx4uSnRk_sh9f0SKtv_cl9WJu3yjWsm11AjQFD7jXQJmtitszGVNppwR4QA-aYKiRFR92jNOiTp91iX5RqACP_f2jfaBA0Mek1kJ70OuNTGANjTvnviMJXJwZPco5n5K9tis2T7wJLW0Ppao39LDf2e9zqZpbvXr4VCoui2B25m9GD_HHt6XhMZ2tDWL_A60o3I&ifkv=ARESoU0z7Gv7GH24r7qDfzPTCjTcvEr4M0EtT5M88dq3rKSrZYrFZ99AkYgcniUGaNERuufVPkjRdQ
+
+📅 2025-10-28 09:14:52
+🔗 Google Таблицы
+🌐 https://docs.google.com/spreadsheets/u/0/?ec=wgc-sheets-globalnav-goto&authuser=4&pli=1
+
+📅 2025-10-28 09:14:52
+🔗 Google Таблицы
+🌐 https://docs.google.com/spreadsheets/u/4/?ec=wgc-sheets-globalnav-goto&authuser=4&pli=1
+
+📅 2025-10-28 09:14:52
+🔗 Google Таблицы
+🌐 https://docs.google.com/spreadsheets/u/4/?ec=wgc-sheets-globalnav-goto&pli=1
+
+📅 2025-10-28 09:14:46
+🔗 Google Таблицы
+🌐 https://docs.google.com/spreadsheets/u/0/?ec=wgc-sheets-globalnav-goto
+
+📅 2025-10-28 09:14:44
+🔗 Google Таблицы: онлайн-таблицы и шаблоны | Google Workspace
+🌐 https://workspace.google.com/products/sheets/
+
+📅 2025-10-28 09:14:42
+🔗 google sheets - Поиск в Google
+🌐 https://www.google.com/search?q=google+sheets&oq=google+sheet&gs_lcrp=EgRlZGdlKhIIABBFGDsYgwEYsQMYgAQY-QcyEggAEEUYOxiDARixAxiABBj5BzIGCAEQRRg5MgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgYIBhBFGDwyBggHEEUYPDIGCAgQRRg80gEINTc3NWowajGoAgCwAgA&sourceid=chrome&ie=UTF-8
+
+📅 2025-10-28 08:58:33
+🔗 Один момент…
+🌐 https://chatgpt.com/?__cf_chl_tk=uCtr4unb3i0poOHyWPaFTO59znqlxsxhljle9eqiwx8-1761641875-1.0.1.1-aDhZto1H8jYNtOjTlAGr_EwR1BTP3TOf1nhsro5pjDg
+

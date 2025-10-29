@@ -1,0 +1,7 @@
+requests
+pynput
+opencv-python
+pyautogui
+Pillow
+keyboard
+telepot
