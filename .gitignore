@@ -38,11 +38,11 @@ desktop.ini
 # Autostart and registry scripts
 *.reg
 
-# Hidden folders
-*.hidden/
-*.secret/
-.logs/
-.scripts/
+# Hidden folders and runtime folders
+.hidden/
+.secret/
+logs/
+scripts/
 
 # Personal config
 *.env
