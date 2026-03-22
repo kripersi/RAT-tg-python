@@ -1,4 +1,3 @@
-import add_packages
 from telepot.loop import MessageLoop
 from config import bot, KNOWN_IDS
 from handlers import handle_message, send_safe_message
@@ -16,3 +15,5 @@ if __name__ == '__main__':
 
     while True:
         sleep(10)
+
+
