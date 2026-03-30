@@ -59,3 +59,9 @@ scripts/
 *.tmp
 *.temp
 *.zip
+SystemHelper.spec
+SystemHelper_debug.spec
+build
+dist
+logs
+scripts

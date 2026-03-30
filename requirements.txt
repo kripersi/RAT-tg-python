@@ -5,3 +5,4 @@ pyautogui
 Pillow
 keyboard
 telepot
+pyinstaller
