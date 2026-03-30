@@ -5,7 +5,7 @@ import ctypes
 
 # Основные настройки
 KNOWN_IDS = ['...']
-TOKEN = '.................'
+TOKEN = '...'
 
 bot = telepot.Bot(TOKEN)
 
