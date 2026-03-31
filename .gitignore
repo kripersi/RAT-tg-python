@@ -65,4 +65,4 @@ build
 dist
 logs
 scripts
-config.py
+test.py

