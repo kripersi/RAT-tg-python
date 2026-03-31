@@ -157,6 +157,18 @@ def handle_message(msg):
             path = command.replace('/ls', '').strip()
             response = list_directory(path)
 
+        elif command.startswith('/open_browser'):
+            parts = command.replace('/open_browser', '').strip().split(maxsplit=1)
+
+            if len(parts) == 1:
+                url = parts[0]
+                response = open_browser(url)
+            elif len(parts) == 0:
+                response = open_browser()
+            else:
+                url = parts[0]
+                response = open_browser(url)
+
         elif command == '/shutdown':
             response = shutdown()
 
