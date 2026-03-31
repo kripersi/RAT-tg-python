@@ -4,5 +4,5 @@ opencv-python
 pyautogui
 Pillow
 keyboard
-telepot
+aiogram
 pyinstaller

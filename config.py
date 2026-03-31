@@ -1,13 +1,10 @@
 import os
 import sys
-import telepot
 import ctypes
 
 # Основные настройки
 KNOWN_IDS = ['...']
 TOKEN = '...'
-
-bot = telepot.Bot(TOKEN)
 
 if getattr(sys, 'frozen', False):
     BASE_DIR = os.path.join(os.environ['APPDATA'], 'SYSTEM')
