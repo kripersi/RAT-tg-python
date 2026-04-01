@@ -1,9 +1,54 @@
-import asyncio
 import re
 import logging
 from commands import *
 from aiogram import Bot
-from aiogram.types import Message, FSInputFile
+import asyncio
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import Message, FSInputFile, CallbackQuery
+
+HOTKEY_PAGES = [
+    [
+        ("Ctrl+C", "ctrl+c"),
+        ("Ctrl+V", "ctrl+v"),
+        ("Ctrl+X", "ctrl+x"),
+        ("Ctrl+Z", "ctrl+z"),
+        ("Ctrl+A", "ctrl+a"),
+        ("Ctrl+S", "ctrl+s"),
+        ("Alt+Tab", "alt+tab"),
+        ("Alt+F4", "alt+f4"),
+        ("Next ➡️", "page_1")
+    ],
+    [
+        ("Win", "win"),
+        ("Win+E", "win+e"),
+        ("Win+D", "win+d"),
+        ("Win+L", "win+l"),
+        ("Win+V", "win+v"),
+        ("Tab", "tab"),
+        ("Enter", "enter"),
+        ("⬅️ Back", "page_0"),
+        ("Next ➡️", "page_2")
+    ],
+    [
+        ("Ctrl+T", "ctrl+t"),
+        ("Ctrl+W", "ctrl+w"),
+        ("Ctrl+Shift+T", "ctrl+shift+t"),
+        ("Ctrl+L", "ctrl+l"),
+        ("F5", "f5"),
+        ("Ctrl+F", "ctrl+f"),
+        ("Backspace", "backspace"),
+        ("Esc", "esc"),
+        ("Space", "space"),
+        ("⬅️ Back", "page_1")
+    ]
+]
+
+
+def build_keyboard(page_number=0):
+    keyboard_buttons = []
+    for text, callback in HOTKEY_PAGES[page_number]:
+        keyboard_buttons.append([InlineKeyboardButton(text=text, callback_data=callback)])
+    return InlineKeyboardMarkup(inline_keyboard=keyboard_buttons)
 
 
 async def send_safe_message(bot: Bot, chat_id, message):
@@ -30,6 +75,38 @@ async def send_file_and_cleanup(bot: Bot, chat_id, file_path, response_text=None
     await send_safe_document(bot, chat_id, file_path)
     os.remove(file_path)
     return response_text
+
+
+async def handle_hotkey_callback(callback: CallbackQuery, bot: Bot):
+    """Обрабатывает нажатия на кнопки горячих клавиш"""
+    data = callback.data
+
+    # Переход по страницам
+    if data.startswith("page_"):
+        page_number = int(data.split("_")[1])
+        await callback.message.edit_text(
+            "🖥️ <b>Горячие клавиши Windows</b>\n\n"
+            "Нажмите на нужную комбинацию для выполнения:",
+            reply_markup=build_keyboard(page_number),
+            parse_mode="HTML"
+        )
+        await callback.answer()
+        return
+
+    # Выполнение горячей клавиши
+    try:
+        result = execute_hotkey(data)
+        await callback.answer(result, show_alert=False)
+
+        await callback.message.edit_text(
+            f"🖥️ <b>Горячие клавиши Windows</b>\n\n"
+            f"✅ Выполнено: <code>{data}</code>\n\n"
+            f"Нажмите на другую комбинацию для выполнения:",
+            reply_markup=build_keyboard(0),
+            parse_mode="HTML"
+        )
+    except Exception as e:
+        await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
 
 
 async def handle_message(message: Message, bot: Bot):
@@ -85,6 +162,19 @@ async def handle_message(message: Message, bot: Bot):
 
         elif command == '/pc_info':
             response = get_pc_info()
+
+        elif command == '/close_tabs':
+            response = close_all_tabs()
+
+        elif command == '/hot_keys':
+            await bot.send_message(
+                chat_id,
+                "🖥️ <b>Горячие клавиши Windows</b>\n\n"
+                "Нажмите на нужную комбинацию для выполнения:",
+                reply_markup=build_keyboard(0),
+                parse_mode="HTML"
+            )
+            return
 
         elif command == '/ip_info':
             info = get_ip_info()
