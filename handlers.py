@@ -304,7 +304,10 @@ async def handle_message(message: Message, bot: Bot):
             response = confirm_self_destruct()
 
         elif command == '/destroy':
-            self_destruct()
+            response = remove_bot()
+            await send_safe_message(bot, chat_id, response)
+            await asyncio.sleep(1)
+            os._exit(0)
 
         elif command.startswith('/create_more_folders'):
             parts = command.replace('/create_more_folders', '').strip().split()

