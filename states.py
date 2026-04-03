@@ -26,6 +26,18 @@ class PythonExec(StatesGroup):
     waiting_for_code = State()
 
 
+class ClipboardSet(StatesGroup):
+    waiting_for_text = State()
+
+
+class MicRecord(StatesGroup):
+    waiting_for_seconds = State()
+
+
+class KillProcess(StatesGroup):
+    waiting_for_pid = State()
+
+
 class VideoPc(StatesGroup):
     waiting_for_seconds = State()
 

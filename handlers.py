@@ -47,7 +47,7 @@ async def handle_hotkey_callback(callback: CallbackQuery, bot: Bot):
 
 async def handle_message(message: Message, bot: Bot, state: FSMContext):
     chat_id = message.chat.id
-    if not checkchat_id(str(chat_id)):
+    if not checkchat_id(chat_id):
         return
 
     # Проверяем состояние перед обработкой файлов
@@ -121,6 +121,26 @@ async def handle_message(message: Message, bot: Bot, state: FSMContext):
         elif command == '/pc_info':
             response = get_pc_info()
 
+        elif command == '/clipboard_get':
+            response = get_clipboard_text()
+
+        elif command == '/mic_record':
+            await state.set_state(MicRecord.waiting_for_seconds)
+            response = 'На сколько секунд записать звук? (макс 300):'
+
+        elif command == '/processes':
+            response = get_processes()
+
+        elif command == '/kill':
+            await state.set_state(KillProcess.waiting_for_pid)
+            response = 'Введите PID процесса, который нужно завершить:'
+
+        elif command == '/beep':
+            response = beep_sound()
+
+        elif command == '/drives':
+            response = get_drives()
+
         elif command == '/close_tabs':
             response = close_all_tabs()
 
@@ -191,6 +211,10 @@ async def handle_message(message: Message, bot: Bot, state: FSMContext):
         elif command == '/download':
             await state.set_state(Download.waiting_for_path)
             response = '📥 Введите путь к файлу на компьютере:'
+
+        elif command == '/clipboard_set':
+            await state.set_state(ClipboardSet.waiting_for_text)
+            response = '📋 Введите текст, который нужно скопировать в буфер обмена:'
 
         elif command == '/download_file':
             await state.set_state(DownloadFile.waiting_for_file)

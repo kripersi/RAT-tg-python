@@ -108,6 +108,41 @@ async def handle_states(message: Message, bot: Bot, state: FSMContext, command: 
             await send_safe_message(bot, chat_id, f'❌ Файл не найден: {command}')
         return True
 
+    # ClipboardSet
+    elif current_state == ClipboardSet.waiting_for_text.state:
+        await state.clear()
+        response = set_clipboard(command)
+        await send_safe_message(bot, chat_id, response)
+        return True
+
+    # KillProcess
+    elif current_state == KillProcess.waiting_for_pid.state:
+        await state.clear()
+        try:
+            pid = int(command)
+            response = kill_process_by_pid(pid)
+        except ValueError:
+            response = '❌ Введите число (PID)'
+        except Exception as e:
+            response = f'❌ Ошибка: {e}'
+        await send_safe_message(bot, chat_id, response)
+        return True
+
+    # MicRecord
+    elif current_state == MicRecord.waiting_for_seconds.state:
+        await state.clear()
+        try:
+            seconds = min(int(command), 300)  # максимум 5 минут
+            path, response = record_audio(seconds)
+            if path:
+                await send_safe_document(bot, chat_id, path)
+                os.remove(path)
+            else:
+                await send_safe_message(bot, chat_id, response)
+        except:
+            await send_safe_message(bot, chat_id, '❌ Введите число секунд')
+        return True
+
     # Run
     elif current_state == Run.waiting_for_path.state:
         await state.clear()

