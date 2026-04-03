@@ -245,8 +245,14 @@ async def handle_message(message: Message, bot: Bot):
             else:
                 response = 'Использование: /move_mouse <направление> <пиксели>'
 
-        elif command == '/click_mouse':
-            response = click_mouse()
+        elif command == '/click_left_mouse':
+            response = click_left_mouse()
+
+        elif command == '/click_right_mouse':
+            response = click_left_mouse()
+
+        elif command == '/double_click':
+            response = double_click_left()
 
         elif command.startswith('/download'):
             path = command.replace('/download', '').strip()

@@ -1,7 +1,6 @@
 # Стандартные библиотеки
 import getpass
 import platform
-import shutil
 import socket
 import subprocess
 import time
@@ -103,7 +102,9 @@ def get_start_message():
         "🖱️ Управление мышью\n"
         "/move_mouse_coord x y — Переместить курсор мыши\n"
         "/move_mouse (левее/правее/ниже/выше) x — Переместить курсор мыши на X\n"
-        "/click_mouse — Кликнуть мышью\n\n"
+        "/click_left_mouse — Кликнуть лев. кн. мыши\n"
+        "/click_right_mouse — Кликнуть правой. кн. мыши\n"
+        "/double_click — Кликнуть два раза\n\n"
         "📢 Взаимодействие с пользователем\n"
         "/msg_box <текст> — Показать сообщение на экране\n"
         "/message_write \"текст\" — Ввести текст в активное поле\n\n"
@@ -287,12 +288,28 @@ def move_mouse_coord(x, y):
         return f'Ошибка перемещения мыши: {e}'
 
 
-def click_mouse():
+def click_left_mouse():
     try:
         mouse.click(Button.left, 1)
-        return '🖱️ Клик выполнен'
+        return '🖱️ Клик левой кнопки мыши выполнен'
     except Exception as e:
         return f'Ошибка клика: {e}'
+
+
+def click_right_mouse():
+    try:
+        mouse.click(Button.right, 1)
+        return '🖱️ Клик правой кнопки мыши выполнен'
+    except Exception as e:
+        return f"❌ Ошибка: {e}"
+
+
+def double_click_left():
+    try:
+        pyautogui.doubleClick()
+        return "🖱️ Двойной щелчок левой кнопки мыши"
+    except Exception as e:
+        return f"❌ Ошибка: {e}"
 
 
 def message_write(text):

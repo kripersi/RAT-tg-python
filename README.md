@@ -89,7 +89,9 @@ pyinstaller --onefile --noconsole --icon=googlechrome.ico --name=SYSTEM main.py
 🖱️ Управление мышью
 * /move_mouse_coord x y — Переместить курсор в координаты  
 * /move_mouse (левее|правее|ниже|выше) x — Смещение курсора на X пикселей  
-* /click_mouse — Кликнуть мышью  
+* /click_left_mouse — Кликнуть лев. кн. мыши
+* /click_right_mouse — Кликнуть правой. кн. мыши
+* /double_click — Кликнуть два раза
 
 📢 Взаимодействие с пользователем
 * /msg_box <текст> — Показать сообщение на экране  
