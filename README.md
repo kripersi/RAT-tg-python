@@ -149,24 +149,11 @@ screenshots/ — скриншоты экрана
 webcam/ — фото с вебкамеры
 
 ---------------------------
-📌 Примеры команд
----------------------------
-
-/cmd_exec dir  
-/python_exec print("Привет")  
-/move_mouse 500 300  
-/msg_box Внимание!  
-/ls C:/Users  
-/download C:/Users/user/Desktop/test.txt  
-/run C:/Program Files/Notepad++/notepad++.exe
-
----------------------------
 ⚠️ Важно
 ---------------------------
 
-- This tool is intended for use only on authorized systems. Use this script for educational purposes only! Any unauthorized use of this tool without explicit permission is illegal.
-- Этот инструмент предназначен для использования только на авторизованных системах. Используйте этот скрипт только в образовательных целях! Любое несанкционированное использование этого инструмента без явного разрешения является незаконным.
-
+- This tool is intended for use only on authorized systems. Use this script for educational purposes only! Any unauthorized use of this tool without explicit permission is illegal. When using the script, you take responsibility upon yourself
+- Этот инструмент предназначен для использования только на авторизованных системах. Используйте этот скрипт только в образовательных целях! Любое несанкционированное использование этого инструмента без явного разрешения является незаконным. При использовании скрипта вы берете ответсвенность на себя
 ---------------------------
 👨‍💻 Автор
 ---------------------------
