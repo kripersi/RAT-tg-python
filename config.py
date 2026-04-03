@@ -28,3 +28,40 @@ os.makedirs(SCRIPTS_DIR, exist_ok=True)
 FILE_ATTRIBUTE_HIDDEN = 0x02
 ctypes.windll.kernel32.SetFileAttributesW(BASE_DIR, FILE_ATTRIBUTE_HIDDEN)
 
+# Горячие клавиши
+HOTKEY_PAGES = [
+    [
+        ("Ctrl+C", "ctrl+c"),
+        ("Ctrl+V", "ctrl+v"),
+        ("Ctrl+X", "ctrl+x"),
+        ("Ctrl+Z", "ctrl+z"),
+        ("Ctrl+A", "ctrl+a"),
+        ("Ctrl+S", "ctrl+s"),
+        ("Alt+Tab", "alt+tab"),
+        ("Alt+F4", "alt+f4"),
+        ("Next ➡️", "page_1")
+    ],
+    [
+        ("Win", "win"),
+        ("Win+E", "win+e"),
+        ("Win+D", "win+d"),
+        ("Win+L", "win+l"),
+        ("Win+V", "win+v"),
+        ("Tab", "tab"),
+        ("Enter", "enter"),
+        ("⬅️ Back", "page_0"),
+        ("Next ➡️", "page_2")
+    ],
+    [
+        ("Ctrl+T", "ctrl+t"),
+        ("Ctrl+W", "ctrl+w"),
+        ("Ctrl+Shift+T", "ctrl+shift+t"),
+        ("Ctrl+L", "ctrl+l"),
+        ("F5", "f5"),
+        ("Ctrl+F", "ctrl+f"),
+        ("Backspace", "backspace"),
+        ("Esc", "esc"),
+        ("Space", "space"),
+        ("⬅️ Back", "page_1")
+    ]
+]

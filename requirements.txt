@@ -1,6 +1,7 @@
 requests
 pynput
 opencv-python
+cryptography
 pyautogui
 Pillow
 keyboard
