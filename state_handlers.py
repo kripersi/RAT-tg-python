@@ -206,6 +206,21 @@ async def handle_states(message: Message, bot: Bot, state: FSMContext, command: 
         await send_safe_message(bot, chat_id, '❌ Отправьте файл, а не текст')
         return True
 
+    # WebcamRecord
+    elif current_state == WebcamRecord.waiting_for_seconds.state:
+        await state.clear()
+        try:
+            seconds = min(int(command), 60)
+            path, response = record_webcam(seconds)
+            if path:
+                await send_safe_document(bot, chat_id, path)
+                os.remove(path)
+            else:
+                await send_safe_message(bot, chat_id, response)
+        except:
+            await send_safe_message(bot, chat_id, '❌ Введите число секунд')
+        return True
+
     # ClickImage
     elif current_state == ClickImage.waiting_for_photo.state:
         await state.clear()

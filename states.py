@@ -72,6 +72,10 @@ class DownloadFile(StatesGroup):
     waiting_for_file = State()
 
 
+class WebcamRecord(StatesGroup):
+    waiting_for_seconds = State()
+
+
 class ClickImage(StatesGroup):
     waiting_for_photo = State()
 

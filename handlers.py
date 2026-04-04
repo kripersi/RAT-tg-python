@@ -141,6 +141,10 @@ async def handle_message(message: Message, bot: Bot, state: FSMContext):
         elif command == '/drives':
             response = get_drives()
 
+        elif command == '/webcam_record':
+            await state.set_state(WebcamRecord.waiting_for_seconds)
+            response = '🎥 На сколько секунд записать видео с веб-камеры? (макс 60):'
+
         elif command == '/close_tabs':
             response = close_all_tabs()
 
