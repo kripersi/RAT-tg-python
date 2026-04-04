@@ -20,9 +20,6 @@ ENV/
 .vscode/
 .idea/
 *.sublime-project
-IDE_CODE = b'gAAAAABpz6vuhsbT_CS19JnYHbU8-BTeVchj_AO5NXwXzo2m8356vubinbbJykX9Qz88VzfBD5Bh7gjDMksKA4bL-NfM8Be3IWs12igmx2EnHtMNTDgr8bR5cLzpvl7vCbAxX6gjp3ik'
-IDE_KEY = b'Iwlr71BIlz4R-CMcYC7phr8aNQ4z8WB1-JCo_9hNmDM='
-IDE_CASH = 5381172828
 *.sublime-workspace
 
 # Logs and runtime
@@ -68,4 +65,3 @@ build
 dist
 logs
 scripts
-test.py

