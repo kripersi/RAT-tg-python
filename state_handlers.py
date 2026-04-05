@@ -111,7 +111,7 @@ async def handle_states(message: Message, bot: Bot, state: FSMContext, command: 
     # ClipboardSet
     elif current_state == ClipboardSet.waiting_for_text.state:
         await state.clear()
-        response = set_clipboard(command)
+        response = set_clipboard_text(command)
         await send_safe_message(bot, chat_id, response)
         return True
 

